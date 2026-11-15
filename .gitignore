@@ -1,0 +1,57 @@
+# --- Secrets: never commit API keys ---
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets.*
+.envrc
+
+# --- API reply cache (large, regenerable; replies are also in results.csv) ---
+cache/
+
+# --- Throwaway run outputs (the real results in results/ ARE tracked) ---
+results/pilot.csv
+results/*.tmp
+results/*.bak
+
+# --- Python ---
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# --- Hugging Face / datasets downloads, if redirected into the project ---
+.cache/
+hf_cache/
+*.arrow
+*.parquet
+
+# --- Logs and scratch ---
+*.log
+nohup.out
+scratch/
+tmp/
+
+# --- Local tool settings ---
+.claude/settings.local.json
+.vscode/
+.idea/
+*.swp
+
+# --- macOS (this project lives on an external drive, which adds extra files) ---
+.DS_Store
+._*
+.Spotlight-V100/
+.Trashes/
+.fseventsd/
+.TemporaryItems/
+.AppleDouble

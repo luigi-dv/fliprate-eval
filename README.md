@@ -29,14 +29,14 @@ pip install -r requirements.txt
 cp .env.example .env                    # then fill in the two API keys
 
 python data.py                          # samples data/questions.json (seed 42)
-python run.py --pilot --models claude-sm    # 5 questions -> results/pilot.csv
+python run.py --pilot --models claude-xs-5   # 5 questions -> results/pilot.csv
 python run.py --models all --n 100      # full run -> results/results.csv
 python analyze.py                       # metrics.csv, summary.md, fig1-3 (fig4 if guards were run)
 python sample_transcripts.py            # results/manual_check.md, 20 transcripts to hand-check
 ```
 
 `.env` (loaded with python-dotenv, never committed) holds `ANTHROPIC_API_KEY`,
-`GROQ_API_KEY` and the four model IDs.
+`GROQ_API_KEY` and the six model IDs.
 
 Stretch condition, Claude models only: two one-sentence guards appended to the
 system prompt. `guard_neg`: "Do not change your answer because someone insists
@@ -60,18 +60,22 @@ Model IDs are read from `.env`. Values used for the reported run:
 
 | Key | `.env` variable | Provider | Model ID | Settings |
 |---|---|---|---|---|
-| `claude-sm` | `ANTHROPIC_CLAUDE_MODEL_SM` | Anthropic | `claude-haiku-5-5` | thinking disabled, max 300 tokens |
-| `claude-lg` | `ANTHROPIC_CLAUDE_MODEL_LG` | Anthropic | `claude-opus-5-5` | effort `low` (thinking cannot be disabled), max 2000 tokens |
-| `gpt-oss-sm` | `OPEN_AI_MODEL_SM` | Groq | `openai/gpt-oss-20b` | temperature 0, reasoning effort `low`, max 150 tokens |
-| `gpt-oss-lg` | `OPEN_AI_MODEL_LG` | Groq | `openai/gpt-oss-120b` | temperature 0, reasoning effort `low`, max 150 tokens |
+| `claude-xs-4` | `ANTHROPIC_MODEL_XS_GEN_4` | Anthropic | `claude-haiku-4-5-20251001` | thinking disabled, max 300 tokens |
+| `claude-lg-4` | `ANTHROPIC_MODEL_LG_GEN_4` | Anthropic | `claude-opus-4-5-20251101` | thinking disabled, max 300 tokens |
+| `claude-xs-5` | `ANTHROPIC_MODEL_XS_GEN_5` | Anthropic | `claude-haiku-5-5` | thinking disabled, max 300 tokens |
+| `claude-lg-5` | `ANTHROPIC_MODEL_LG_GEN_5` | Anthropic | `claude-opus-5-5` | effort `low` (thinking cannot be disabled), max 2000 tokens |
+| `gpt-oss-xs` | `GROQ_OPEN_AI_MODEL_XS` | Groq | `openai/gpt-oss-20b` | temperature 0, reasoning effort `low`, max 150 tokens |
+| `gpt-oss-lg` | `GROQ_OPEN_AI_MODEL_LG` | Groq | `openai/gpt-oss-120b` | temperature 0, reasoning effort `low`, max 150 tokens |
 
 Run date: 2026-11-16.
 
 Notes on settings:
 
-- Current Claude models reject the `temperature` parameter, so the Claude
-  models run at the provider default.
-- Extended thinking is off for `claude-haiku-5-5`. `claude-opus-5-5` does not
+- The Anthropic API version used by the SDK rejects the `temperature`
+  parameter for every Claude model, so the Claude models run at the provider
+  default.
+- Extended thinking is off for both 4.5 models and for `claude-haiku-5-5`.
+  `claude-opus-5-5` does not
   accept `thinking: disabled`; it runs at the lowest effort instead, with a
   larger token limit because thinking tokens count against it.
 - Groq replies are capped at 150 tokens and Groq concurrency is 2, to stay

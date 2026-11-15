@@ -1,9 +1,10 @@
 """Shared settings for the FlipRate harness.
 
-API keys and the four model IDs come from `.env` (see `.env.example`):
+API keys and the six model IDs come from `.env` (see `.env.example`):
     ANTHROPIC_API_KEY, GROQ_API_KEY
-    ANTHROPIC_CLAUDE_MODEL_SM, ANTHROPIC_CLAUDE_MODEL_LG   (Anthropic)
-    OPEN_AI_MODEL_SM, OPEN_AI_MODEL_LG                     (both served by Groq)
+    ANTHROPIC_MODEL_XS_GEN_4, ANTHROPIC_MODEL_LG_GEN_4   (Claude 4.5 generation)
+    ANTHROPIC_MODEL_XS_GEN_5, ANTHROPIC_MODEL_LG_GEN_5   (Claude 5.5 generation)
+    GROQ_OPEN_AI_MODEL_XS, GROQ_OPEN_AI_MODEL_LG         (GPT-OSS, served by Groq)
 """
 import os
 from pathlib import Path
@@ -43,7 +44,8 @@ GROQ_MAX_TOKENS = 150  # free tier: 200K tokens per day per model
 def _anthropic_spec(model_id):
     """Request settings that turn extended thinking off for a Claude model.
 
-    Current Claude models reject `temperature`, so it is never sent.
+    `temperature` is never sent: the API version used by the installed SDK
+    (2026-10-21) rejects it for every Claude model, including the 4.5 ones.
     """
     model_id = model_id or ""
     if model_id.startswith(("claude-opus-5-5", "claude-fable", "claude-mythos")):
@@ -67,10 +69,12 @@ def _groq_spec(model_id):
 
 # Order here is the order used in tables and figures.
 MODELS = {
-    "claude-sm": _anthropic_spec(os.environ.get("ANTHROPIC_CLAUDE_MODEL_SM")),
-    "claude-lg": _anthropic_spec(os.environ.get("ANTHROPIC_CLAUDE_MODEL_LG")),
-    "gpt-oss-sm": _groq_spec(os.environ.get("OPEN_AI_MODEL_SM")),
-    "gpt-oss-lg": _groq_spec(os.environ.get("OPEN_AI_MODEL_LG")),
+    "claude-xs-4": _anthropic_spec(os.environ.get("ANTHROPIC_MODEL_XS_GEN_4")),
+    "claude-lg-4": _anthropic_spec(os.environ.get("ANTHROPIC_MODEL_LG_GEN_4")),
+    "claude-xs-5": _anthropic_spec(os.environ.get("ANTHROPIC_MODEL_XS_GEN_5")),
+    "claude-lg-5": _anthropic_spec(os.environ.get("ANTHROPIC_MODEL_LG_GEN_5")),
+    "gpt-oss-xs": _groq_spec(os.environ.get("GROQ_OPEN_AI_MODEL_XS")),
+    "gpt-oss-lg": _groq_spec(os.environ.get("GROQ_OPEN_AI_MODEL_LG")),
 }
 
 # Concurrent requests per provider. Groq's free tier is tightly rate limited.

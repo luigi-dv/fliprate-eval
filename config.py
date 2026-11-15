@@ -1,7 +1,18 @@
-"""Shared settings for the FlipRate harness."""
+"""Shared settings for the FlipRate harness.
+
+API keys and the four model IDs come from `.env` (see `.env.example`):
+    ANTHROPIC_API_KEY, GROQ_API_KEY
+    ANTHROPIC_CLAUDE_MODEL_SM, ANTHROPIC_CLAUDE_MODEL_LG   (Anthropic)
+    OPEN_AI_MODEL, META_MODEL                              (both served by Groq)
+"""
+import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 ROOT = Path(__file__).resolve().parent
+load_dotenv(ROOT / ".env")
+
 DATA_DIR = ROOT / "data"
 RESULTS_DIR = ROOT / "results"
 CACHE_DIR = ROOT / "cache"
@@ -10,49 +21,61 @@ QUESTIONS_PATH = DATA_DIR / "questions.json"
 SEED = 42
 LETTERS = "ABCD"
 
-# 4 required subjects + 6 mixed (medicine, security, statistics-heavy social science,
-# history, philosophy, moral reasoning).
-SUBJECTS = [
-    "college_physics",
-    "formal_logic",
-    "professional_law",
-    "high_school_mathematics",
-    "college_medicine",
-    "computer_security",
-    "econometrics",
-    "high_school_us_history",
-    "philosophy",
-    "moral_scenarios",
-]
-N_PER_SUBJECT = 10
+# Questions per MMLU subject (100 in total). Weighted towards subjects where
+# strong models still make mistakes, so the "initially wrong" (correction)
+# subgroup is not tiny. high_school_mathematics is kept small: it is easy.
+SUBJECT_COUNTS = {
+    "formal_logic": 14,
+    "professional_law": 14,
+    "college_physics": 12,
+    "college_mathematics": 12,
+    "abstract_algebra": 10,
+    "econometrics": 10,
+    "moral_scenarios": 8,
+    "professional_accounting": 8,
+    "global_facts": 6,
+    "high_school_mathematics": 6,
+}
 
-# Model IDs checked against the provider model lists on 2026-11-15.
-#   temperature: None means "do not send it" (current Claude models reject the
-#                parameter; see README).
-#   max_tokens:  300 for plain chat models. Reasoning models spend hidden
-#                reasoning tokens out of the same budget, so they get more room.
-#   extra:       provider-specific keyword arguments passed through as-is.
+GROQ_MAX_TOKENS = 150  # free tier: 200K tokens per day per model
+
+
+def _anthropic_spec(model_id):
+    """Request settings that turn extended thinking off for a Claude model.
+
+    Current Claude models reject `temperature`, so it is never sent.
+    """
+    model_id = model_id or ""
+    if model_id.startswith(("claude-opus-5-5", "claude-fable", "claude-mythos")):
+        # These models cannot run without thinking (the API returns a 400 for
+        # thinking=disabled). Lowest effort is the closest available setting;
+        # thinking tokens count against max_tokens, hence the larger limit.
+        extra, max_tokens = {"output_config": {"effort": "low"}}, 2000
+    elif model_id.startswith("claude-sonnet-5-5"):
+        extra, max_tokens = {"thinking": {"type": "between_tools"}}, 300
+    else:
+        extra, max_tokens = {"thinking": {"type": "disabled"}}, 300
+    return {"provider": "anthropic", "id": model_id, "temperature": None,
+            "max_tokens": max_tokens, "extra": extra}
+
+
+# Order here is the order used in tables and figures.
 MODELS = {
-    "claude": {
-        "provider": "anthropic",
-        "id": "claude-opus-5-5",
-        "temperature": None,
-        "max_tokens": 2000,
-        "extra": {"output_config": {"effort": "low"}},
+    "claude-sm": _anthropic_spec(os.environ.get("ANTHROPIC_CLAUDE_MODEL_SM")),
+    "claude-lg": _anthropic_spec(os.environ.get("ANTHROPIC_CLAUDE_MODEL_LG")),
+    "gpt-oss": {
+        "provider": "groq",
+        "id": os.environ.get("OPEN_AI_MODEL"),
+        "temperature": 0,
+        "max_tokens": GROQ_MAX_TOKENS,
+        "extra": {"reasoning_effort": "low"},
     },
     "llama": {
         "provider": "groq",
-        "id": "llama-3.3-70b-versatile",
+        "id": os.environ.get("META_MODEL"),
         "temperature": 0,
-        "max_tokens": 300,
+        "max_tokens": GROQ_MAX_TOKENS,
         "extra": {},
-    },
-    "gpt-oss": {
-        "provider": "groq",
-        "id": "openai/gpt-oss-120b",
-        "temperature": 0,
-        "max_tokens": 1500,
-        "extra": {"reasoning_effort": "low"},
     },
 }
 

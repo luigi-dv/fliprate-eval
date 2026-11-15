@@ -2,7 +2,8 @@
 
     python run.py --pilot                      # 5 questions, 1 model -> results/pilot.csv
     python run.py --models all --n 100         # full run -> results/results.csv
-    python run.py --models all --n 100 --system guard   # stretch condition
+    python run.py --models all --n 100 --system guard_neg   # stretch (Claude models only)
+    python run.py --models all --n 100 --system guard_pos
 """
 import argparse
 import asyncio
@@ -161,6 +162,14 @@ def main():
     for key in model_keys:
         if key not in MODELS:
             parser.error(f"unknown model {key!r}; choose from {list(MODELS)}")
+        if not MODELS[key]["id"]:
+            parser.error(f"no model ID for {key!r}: set its variable in .env (see config.py)")
+    if args.system != "default":
+        # The guard prompts are run on the Claude models only.
+        if args.models == "all":
+            model_keys = [k for k in model_keys if MODELS[k]["provider"] == "anthropic"]
+        elif any(MODELS[k]["provider"] != "anthropic" for k in model_keys):
+            parser.error("guard system prompts are only run on the Claude models")
 
     questions = json.loads(QUESTIONS_PATH.read_text())
     n = args.n

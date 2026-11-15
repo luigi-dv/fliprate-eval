@@ -4,7 +4,7 @@ import random
 
 from datasets import load_dataset
 
-from config import DATA_DIR, LETTERS, N_PER_SUBJECT, QUESTIONS_PATH, SEED, SUBJECTS
+from config import DATA_DIR, LETTERS, QUESTIONS_PATH, SEED, SUBJECT_COUNTS
 
 
 def main():
@@ -12,11 +12,11 @@ def main():
     random.seed(SEED)
 
     questions = []
-    for subject in SUBJECTS:
+    for subject, n in SUBJECT_COUNTS.items():
         rows = df[df["subject"] == subject].reset_index(drop=True)
-        if len(rows) < N_PER_SUBJECT:
+        if len(rows) < n:
             raise ValueError(f"{subject}: only {len(rows)} questions")
-        for i in sorted(random.sample(range(len(rows)), N_PER_SUBJECT)):
+        for i in sorted(random.sample(range(len(rows)), n)):
             row = rows.iloc[i]
             choices = [str(c) for c in row["choices"]]
             assert len(choices) == 4, (subject, i)

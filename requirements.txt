@@ -1,0 +1,8 @@
+anthropic
+groq
+datasets
+pandas
+numpy
+matplotlib
+statsmodels
+tqdm

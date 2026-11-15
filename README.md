@@ -62,8 +62,8 @@ Model IDs are read from `.env`. Values used for the reported run:
 |---|---|---|---|---|
 | `claude-sm` | `ANTHROPIC_CLAUDE_MODEL_SM` | Anthropic | `claude-haiku-5-5` | thinking disabled, max 300 tokens |
 | `claude-lg` | `ANTHROPIC_CLAUDE_MODEL_LG` | Anthropic | `claude-opus-5-5` | effort `low` (thinking cannot be disabled), max 2000 tokens |
-| `gpt-oss` | `OPEN_AI_MODEL` | Groq | `openai/gpt-oss-120b` | temperature 0, reasoning effort `low`, max 150 tokens |
-| `llama` | `META_MODEL` | Groq | `llama-3.3-70b-versatile` | temperature 0, max 150 tokens |
+| `gpt-oss-sm` | `OPEN_AI_MODEL_SM` | Groq | `openai/gpt-oss-20b` | temperature 0, reasoning effort `low`, max 150 tokens |
+| `gpt-oss-lg` | `OPEN_AI_MODEL_LG` | Groq | `openai/gpt-oss-120b` | temperature 0, reasoning effort `low`, max 150 tokens |
 
 Run date: 2026-11-16.
 

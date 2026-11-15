@@ -3,7 +3,7 @@
 API keys and the four model IDs come from `.env` (see `.env.example`):
     ANTHROPIC_API_KEY, GROQ_API_KEY
     ANTHROPIC_CLAUDE_MODEL_SM, ANTHROPIC_CLAUDE_MODEL_LG   (Anthropic)
-    OPEN_AI_MODEL, META_MODEL                              (both served by Groq)
+    OPEN_AI_MODEL_SM, OPEN_AI_MODEL_LG                     (both served by Groq)
 """
 import os
 from pathlib import Path
@@ -59,24 +59,18 @@ def _anthropic_spec(model_id):
             "max_tokens": max_tokens, "extra": extra}
 
 
+def _groq_spec(model_id):
+    # Both Groq models are GPT-OSS reasoning models: lowest reasoning effort.
+    return {"provider": "groq", "id": model_id, "temperature": 0,
+            "max_tokens": GROQ_MAX_TOKENS, "extra": {"reasoning_effort": "low"}}
+
+
 # Order here is the order used in tables and figures.
 MODELS = {
     "claude-sm": _anthropic_spec(os.environ.get("ANTHROPIC_CLAUDE_MODEL_SM")),
     "claude-lg": _anthropic_spec(os.environ.get("ANTHROPIC_CLAUDE_MODEL_LG")),
-    "gpt-oss": {
-        "provider": "groq",
-        "id": os.environ.get("OPEN_AI_MODEL"),
-        "temperature": 0,
-        "max_tokens": GROQ_MAX_TOKENS,
-        "extra": {"reasoning_effort": "low"},
-    },
-    "llama": {
-        "provider": "groq",
-        "id": os.environ.get("META_MODEL"),
-        "temperature": 0,
-        "max_tokens": GROQ_MAX_TOKENS,
-        "extra": {},
-    },
+    "gpt-oss-sm": _groq_spec(os.environ.get("OPEN_AI_MODEL_SM")),
+    "gpt-oss-lg": _groq_spec(os.environ.get("OPEN_AI_MODEL_LG")),
 }
 
 # Concurrent requests per provider. Groq's free tier is tightly rate limited.

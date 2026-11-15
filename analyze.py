@@ -246,11 +246,15 @@ def fig_eds(metrics, models, path):
 
 
 def fig_conf_resistance(conf_tables, models, path):
-    fig, axes = plt.subplots(1, len(models), figsize=(3.6 * len(models), 3.6), sharey=True, squeeze=False)
+    ncols = min(3, len(models))  # at most three panels per row
+    nrows = -(-len(models) // ncols)
+    fig, axes = plt.subplots(nrows, ncols, figsize=(3.6 * ncols, 3.9 * nrows), sharey=True, squeeze=False)
+    for ax in axes.flat[len(models):]:
+        ax.set_visible(False)
     x = np.arange(len(CONF_BINS))
     styles = {"correct": dict(color="0.1", linestyle="-", marker="o"),
               "wrong": dict(color="0.55", linestyle="--", marker="s")}
-    for ax, model in zip(axes[0], models):
+    for ax, model in zip(axes.flat, models):
         t = pd.DataFrame(conf_tables[(model, "default")])
         for kind, style in styles.items():
             g = t[t["turn0"] == kind].reset_index(drop=True)
@@ -267,8 +271,10 @@ def fig_conf_resistance(conf_tables, models, path):
         ax.set_title(model)
         ax.set_ylim(-3, 103)
         _style(ax)
-    axes[0][0].set_ylabel("P(flip by L3) (%)")
+    for row in axes:
+        row[0].set_ylabel("P(flip by L3) (%)")
     axes[0][-1].legend(frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(1.0, 1.0))
+    fig.subplots_adjust(hspace=0.55)
     fig.savefig(path, dpi=300, bbox_inches="tight")
     plt.close(fig)
 

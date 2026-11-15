@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "college_physics-0003",
+    "subject": "college_physics",
+    "question": "The best type of laser with which to do spectroscopy over a range of visible wavelengths is",
+    "choices": [
+      "a dye laser",
+      "a helium-neon laser",
+      "an excimer laser",
+      "a ruby laser"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "college_physics-0013",
+    "subject": "college_physics",
+    "question": "The primary source of the Sun’s energy is a series of thermonuclear reactions in which the energy produced is c^2 times the mass difference between",
+    "choices": [
+      "two hydrogen atoms and one helium atom",
+      "four hydrogen atoms and one helium atom",
+      "six hydrogen atoms and two helium atoms",
+      "three helium atoms and one carbon atom"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "college_physics-0014",
+    "subject": "college_physics",
+    "question": "Electromagnetic radiation provides a means to probe aspects of the physical universe. Which of the following statements regarding radiation spectra is NOT correct?",
+    "choices": [
+      "Lines in the infrared, visible, and ultraviolet regions of the spectrum reveal primarily the nuclear structure of the sample.",
+      "The wavelengths identified in an absorption spectrum of an element are among those in its emission spectrum.",
+      "Absorption spectra can be used to determine which elements are present in distant stars.",
+      "Spectral analysis can be used to identify the composition of galactic dust."
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "college_physics-0017",
+    "subject": "college_physics",
+    "question": "One end of a horizontal, massless spring is attached to a wall. A mass of 0.30 kg is attached to the other end of the spring and rests on a table. The mass is displaced 0.030 m from its equilibrium position and released. It has a speed of 0.040 m/s as it passes through its equilibrium position. In the absence of friction, what is the total mechanical energy of the system?",
+    "choices": [
+      "0.24 mJ",
+      "0.38 mJ",
+      "0.48 mJ",
+      "0.75 mJ"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "college_physics-0028",
+    "subject": "college_physics",
+    "question": "A proton moves in the +z-direction after being accelerated from rest through a potential difference V. The proton then passes through a region with a uniform electric field E in the +x-direction and a uniform magnetic field B in the +y-direction, but the proton’s trajectory is not affected. If the experiment were repeated using a potential difference of 2V, the proton would then be",
+    "choices": [
+      "deflected in the +x-direction",
+      "deflected in the -x-direction",
+      "deflected in the +y-direction",
+      "deflected in the -y-direction"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "college_physics-0031",
+    "subject": "college_physics",
+    "question": "If the Sun were suddenly replaced by a black hole of the same mass, it would have a Schwarzschild radius of 3,000 m. What effect, if any, would this change have on the orbits of the planets?",
+    "choices": [
+      "The planets would move directly toward the Sun.",
+      "The planets would move in spiral orbits.",
+      "The planets would oscillate about their former elliptical orbits.",
+      "The orbits would remain unchanged."
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "college_physics-0035",
+    "subject": "college_physics",
+    "question": "A student makes 10 one-second measurements of the disintegration of a sample of a long-lived radioactive isotope and obtains the following values: 3, 0, 2, 1, 2, 4, 0, 1, 2, 5. How long should the student count to establish the rate to an uncertainty of 1 percent?",
+    "choices": [
+      "80 s",
+      "160 s",
+      "2,000 s",
+      "5,000 s"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "college_physics-0081",
+    "subject": "college_physics",
+    "question": "Consider an electron in the n = 4, l = 1 state in hydrogen. Which of the following final states can NOT be reached by an allowed transition?",
+    "choices": [
+      "n = 3, l = 2",
+      "n = 3, l = 1",
+      "n = 3, l = 0",
+      "n = 2, l = 0"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "college_physics-0086",
+    "subject": "college_physics",
+    "question": "Which of the following lasers utilizes transitions that involve the energy levels of free atoms?",
+    "choices": [
+      "Diode laser",
+      "Dye laser",
+      "Free-electron laser",
+      "Gas laser"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "college_physics-0094",
+    "subject": "college_physics",
+    "question": "Two identical satellites, A and B, are in circular orbits around Earth. The orbital radius of A is twice that of B. Which of the following gives the ratio of the angular momentum of A to the angular momentum of B?",
+    "choices": [
+      "4",
+      "2",
+      "sqrt(2)",
+      "1/sqrt(2)"
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "formal_logic-0003",
+    "subject": "formal_logic",
+    "question": "Construct a complete truth table for the following argument. Then, using the truth table, determine whether the argument is valid or invalid. If the argument is invalid, choose an option which presents a counterexample. (There may be other counterexamples as well.)\n~G ⊃ H\n~H / G",
+    "choices": [
+      "Valid",
+      "Invalid. Counterexample when G and H are true",
+      "Invalid. Counterexample when G is true and H is false",
+      "Invalid. Counterexample when H is true and G is false"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "formal_logic-0004",
+    "subject": "formal_logic",
+    "question": "Use the following key to translate the given formula of PL to natural, English sentences.\nA: Marina reads a Percy Jackson book.\nB: Izzy plays Minecraft.\nC: Emily stops working.\nD: Russell makes dinner.\nE: Ashleigh stops by.\n(~B • E) ⊃ D",
+    "choices": [
+      "If it's not the case that both Izzy plays Minecraft and Ashleigh stops by then Russell makes dinner.",
+      "If it's both not the case that Izzy plays Minecraft and Ashleigh stops by then Russell makes dinner.",
+      "Izzy playing Minecraft and Ashleigh stopping by entails that Russell makes dinner.",
+      "Russell's making dinner is a sufficient condition for Izzy not playing Minecraft and Ashleigh stopping by."
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "formal_logic-0011",
+    "subject": "formal_logic",
+    "question": "Construct a complete truth table for the following pairs of propositions. Then, using the truth tables, determine whether the statements are logically equivalent or contradictory. If neither, determine whether they are consistent or inconsistent. Justify your answers.\n(~M ⊃ ~N) ∨ (O ≡ N) and (~M · N) · [(~O ∨ ~N) · (O ∨ N)]",
+    "choices": [
+      "Logically equivalent",
+      "Contradictory",
+      "Neither logically equivalent nor contradictory, but consistent",
+      "Inconsistent"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "formal_logic-0027",
+    "subject": "formal_logic",
+    "question": "Which of the given formulas of PL is the best symbolization of the following sentence?\nIf Beth rides her bike, she gets to work earlier.",
+    "choices": [
+      "B ⊃ W",
+      "W ⊃ B",
+      "B ≡ W",
+      "Both A and B"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "formal_logic-0029",
+    "subject": "formal_logic",
+    "question": "Use indirect truth tables to determine whether the following argument is valid. If the argument is invalid, choose an option which presents a counterexample. (There may be other counterexamples as well.)\nE ⊃ F\nG ⊃ ~F / ~G ∨ ~E",
+    "choices": [
+      "Valid",
+      "Invalid. Counterexample when E, F, and G are true",
+      "Invalid. Counterexample when E and G are true and F is false",
+      "Invalid. Counterexample when F and G are true and E is false"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "formal_logic-0054",
+    "subject": "formal_logic",
+    "question": "Identify the antecedent of the following conditional proposition: The Bees win their first game only if either the Aardvarks or the Chipmunks do not win their first games.",
+    "choices": [
+      "The Aardvarks do not win their first game.",
+      "The Bees win their first game.",
+      "The Chipmunks do not win their first game.",
+      "Either the Aardvarks or the Chipmunks do not win their first games."
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "formal_logic-0069",
+    "subject": "formal_logic",
+    "question": "Select the best English interpretation of the given arguments in predicate logic.\n(∃x)(Cx • Ox)\n(∀x)[(~Cx ⊃ ~Bx) ⊃ ~Og]\t/ ~Og",
+    "choices": [
+      "Some cookies have oatmeal. If something's not being a cookie entails that it doesn't have chocolate chips, then this cookie doesn't have oatmeal. So this cookie doesn't have oatmeal.",
+      "Some cookies have oatmeal. If something is not a cookie and does not have chocolate chips, it doesn't have oatmeal. So this cookie doesn't have oatmeal.",
+      "Some cookies have oatmeal. If something doesn't have oatmeal, then it is not a cookie and it doesn't have chocolate chips. So this cookie doesn't have oatmeal.",
+      "Some cookies have oatmeal. If something's not having chocolate chips entails that it is not a cookie, then it doesn't have oatmeal. So this cookie doesn't have oatmeal."
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "formal_logic-0075",
+    "subject": "formal_logic",
+    "question": "Which of the given formulas of PL is the best symbolization of the following sentence?\nIf either George enrolls or Harry enrolls, then Ira does not enroll.",
+    "choices": [
+      "(G ⊃ H) ∨ I",
+      "(G ∨ H) ⊃ I",
+      "(G ⊃ H) ∨ ~I",
+      "(G ∨ H) ⊃ ~I"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "formal_logic-0094",
+    "subject": "formal_logic",
+    "question": "Select the best translation into predicate logic. Marco doesn't move from Spain to Italy. (i: Italy; m: Marco; s: Spain; Mxyz: x moves to y from z)",
+    "choices": [
+      "~Mmsi",
+      "M~mis",
+      "~Mmis",
+      "M~msi"
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "formal_logic-0114",
+    "subject": "formal_logic",
+    "question": "Which of the given formulas of PL is the best symbolization of the following sentence?\nEither England's importing beef is a necessary condition for France's subsidizing agriculture or China promotes human rights given that South Africa doesn't supply diamonds.",
+    "choices": [
+      "(E ⊃ F) ∨ (C ≡ ~S)",
+      "(F ⊃ E) ∨ (~S ≡ C)",
+      "(E ⊃ F) ∨ (S ⊃~C)",
+      "(F ⊃ E) ∨ (~S ⊃ C)"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "professional_law-0054",
+    "subject": "professional_law",
+    "question": "Bob Wilson borrowed $20,000 from Ted Lamar to open a hardware store. Ted's only interest in the business was the repayment of his 5-year unsecured loan. Bob was so grateful for the loan that he named his business \"Wilson and Lamar Hardware\" and purchased signs and advertising displaying this name. He also listed Bob Wilson and Ted Lamar as \"partners\" on his stationery. When Ted found out, he was flattered to the point that he voluntarily reduced Bob's interest rate from 9 percent to 8 percent per annum. A few weeks later, Pete Smith, who had assumed that both Wilson and Lamar were operating the hardware store and was not familiar with the true situation, sold goods to Wilson and Lamar Hardware. Pete Smith has been unable to collect for the goods and he seeks your advice. Your advice to Pete is",
+    "choices": [
+      "only Bob Wilson is liable.",
+      "Bob Wilson and Ted Lamar are liable jointly.",
+      "Bob Wilson is liable for the entire amount and Ted Lamar is liable only to the extent the debt cannot be collected from Bob Wilson.",
+      "only the de facto partnership arising from the relationship between Wilson and Lamar is liable."
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "professional_law-0407",
+    "subject": "professional_law",
+    "question": "A producer of widgets contacted a manufacturer of boxes about the possibility of purcIiasing specially designed boxes for shipping the widgets to customers. The producer sent the manufacturer a sheet containing the dimensions of the boxes' needs, as well as the logo to be placed on each box. After negotiations, the parties entered into a written contract whereby the manufacturer agreed to supply the producer with as many of the boxes as the producer may require up to a maximum of 10,000 per month. Later that day, the producer telephoned the manufacturer and said that they were running a one-time promotion and expected to sell an unusually large number of widgets. Therefore, for the first month only, they would need 15,000 boxes. The manufacturer agreed to this request. The manufacturer's oral agreement to supply the producer with the 15,000 boxes for the first month would most likely be held",
+    "choices": [
+      "enforceable.",
+      "unenforceable, because their written contract on the same date was the final integration of the terms of their agreement.",
+      "unenforceable, because the agreement was violative of the parol evidence rule.",
+      "unenforceable, because there was inadequate consideration to support the manufacturer's unilateral promise."
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "professional_law-0859",
+    "subject": "professional_law",
+    "question": "While a ski lift was ascending the mountain, the overhead cable broke, dropping a skier 15 feet to the ground. The skier suffered a broken pelvis on account of the fall. Thereafter, the skier sued the ski resort alleging negligent maintenance of the ski lift machinery. The ski resort's skier's attorney took a discovery deposition of a witness who was seated behind the skier at the time of the accident. The witness died shortly after the deposition. At trial, the skier offers the witness's deposition testimony into evidence. Upon objection by the ski resort's attorney, the deposition is",
+    "choices": [
+      "admissible as former testimony.",
+      "admissible, provided that the witness's statements are more probative on the point than any other evidence the skier can procure through reasonable efforts and that the skier has given the ski resort reasonable notice that she would offer the deposition.",
+      "inadmissible, because it violates the ski resort's right to confront the witnesses against itself.",
+      "inadmissible, because it is hearsay not within any recognized exception."
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "professional_law-1034",
+    "subject": "professional_law",
+    "question": "A defendant suspected her long-term boyfriend was cheating on her. On a hunch, she went to her boyfriend's apartment one afternoon and, using her key, she entered the apartment. Once inside, she found her boyfriend and his new girlfriend in bed together. In a rage, the defendant retrieved the gun from the nightstand and killed her boyfriend and his new girlfriend. After the shooting, the defendant left on a two-day trip to the mountains to get the week's events off her mind. She called her teenage neighbor to take care of her apartment while she was gone and to look after her 4-year-old daughter. That night, after the defendant left, the police came to the apartment. They asked the neighbor if they could search the apartment, and the neighbor gave them permission. The police found in the defendant's bedroom the gun used to kill her boyfriend. At a motion to suppress the gun prior to trial, which of the following facts would the defendant's attorney be LEAST likely to attempt to prove?",
+    "choices": [
+      "The defendant gave her neighbor the keys to her apartment.",
+      "The police did not have a search warrant.",
+      "The defendant told her neighbor not to answer the door to anyone.",
+      "The police told the neighbor she would be taken to the police station if she refused permission to search."
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "professional_law-1116",
+    "subject": "professional_law",
+    "question": "A man was driving his new car along a dark road with the car's high-beam headlights on to illuminate the road. When he saw the headlights of another car appear in the distance, he reached to turn the high beams off. Instead of turning from high-beam to low-beam, the headlights on the car turned off completely. The man tried repeatedly to turn the lights on again but could not do so. He collided with the other car and suffered injuries. The man has brought an action against the manufacturer of the headlight controls in his car, the manufacturer of his car, and the retailer who sold him the car. If the man can establish that a defect in the controls caused the accident, from whom can he recover?",
+    "choices": [
+      "Only the manufacturer of the car and the retailer of the car.",
+      "Only the manufacturer of the car.",
+      "Only the manufacturer of the headlight controls and the manufacturer of the car.",
+      "All three defendants."
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "professional_law-1149",
+    "subject": "professional_law",
+    "question": "A man was prosecuted for the alleged murder of his estranged wife. At trial, the government was allowed to present the testimony of several women who testified to having flirtatious or sexual encounters with the defendant over the past 20 years prior to the homicide. None of the testimony showed any such activity within three years of the murder date, and none of it showed any violent tendencies of the defendant or intentions expressed that he wanted to kill his wife. The defendant had an alibi for the time of the crime and presented many alibi witnesses. The government claimed that it was showing motive by proving the defendant's proclivity for extra-marital affairs over the years and therefore his bad relationship with his wife. The jury convicted him after hearing the testimony of 10 women regarding defendant's various sexual contacts with them over prior years. The defendant appealed the murder conviction, claiming that the women's testimony was prejudicial and inflammatory and showed only bad character, which is not admissible under evidentiary rules. Will the appeals court likely reverse the conviction and order a new trial?",
+    "choices": [
+      "Yes, the trial was unfair in presenting testimony of women going back over 20 years; it would have been proper to admit such testimony only as to the five years preceding the crime.",
+      "Yes, the defendant did not receive a fair trial; the testimony of the women only showed his bad character but because they were old incidents and not continuing, they did not allow a permissible inference that these affairs gave him a motive to kill his spouse.",
+      "No, if the testimony was admitted in error it was harmless error that did not sway the jury one way or another and so the defendant got a fair trial in all other respects.",
+      "No, the testimony was admissible because it tended to show a pattern of \"transferred intent\" that proved the defendant's great hostility to his wife, and his need to eliminate her from his life so that he could go back to having a wild life."
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "professional_law-1232",
+    "subject": "professional_law",
+    "question": "A man, his brother and his friend all discuss murdering the man's neighbor because the neighbor took some shots at the man's dog but he missed. They agree on a plan. They decided on strychnine poisoning, which the friend told them how to get and they went and got it. When they asked the friend to go forward in poisoning the victim, he refused, saying, \"I'm was only here for planning and advice, but I never intended to commit murder.\" The man and his brother took the poison to a meeting with the neighbor, but he wouldn't drink. They were caught and arrested. The statute requires an overt act for criminal conspiracy. Which of the following most accurately states the criminal responsibility of each of the three men?",
+    "choices": [
+      "The man and his brother have committed criminal conspiracy and attempted murder.",
+      "The man and his brother are guilty of conspiracy but not attempted murder.",
+      "The man and his brother are guilty of conspiracy and attempted murder, but the friend is guilty of nothing.",
+      "The man and his brother are guilty of conspiracy and attempted murder, and the friend is guilty of criminal conspiracy."
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "professional_law-1330",
+    "subject": "professional_law",
+    "question": "An employee wdrked as a delivery person for a drugstore. As part of the employee's duties and responsibilities, he would regularly deliver prescriptions and other items (such as toiletries, cosmetics, vitamins, and gift products) to customers. One afternoon while the employee was on duty, he remembered that it was his girlfriend's birthday. He went ahead and bought her a bottle of perfume from the pharmacy's cosmetics department. The employee paid the full price of $79. 95 for the perfume and had the perfume gift wrapped. He then drove to the girlfriend's house in the company van to personally deliver the birthday present. This trip took place during the employee's regular working hours while he was en route to make another delivery from his van. As he was traveling to the girlfriend's house, he was in such a hurry that he drove through a red light and collided with a vehicle owned and operated by a driver. The driver, who had entered the intersection on the green light, tried unsuccessfully to swerve and stop but was unable to avoid the employee's vehicle. The driver was injured in the accident, which caused extensive damage to both vehicles. If the driver brings suit against the drugstore to recover damages arising from the accident, the driver will probably",
+    "choices": [
+      "prevail, because the employee paid for the perfume.",
+      "prevail, because the employee was under the control and direction of the drugstore at the time of the accident.",
+      "not prevail, because the employee was acting outside the scope of the employment relationship at the time of the accident.",
+      "not prevail, because the drugstore was not negligent in hiring the employee."
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "professional_law-1436",
+    "subject": "professional_law",
+    "question": "A man mailed a letter to a woman promising to sell her his motorcycle for $1,000. After receiving the letter, the woman sent the man a fax that stated, \"The price is a little high, I'll give you $800. \" The man responded by fax, \"I will not accept $800. \" The next day, the woman telephoned the man and said, \"I changed my mind, I will pay $1,000 for the motorcycle. \" The man refused to sell the woman his motorcycle. If the woman sues the man for breach of contract, which of the following defenses would be the man's best defense?",
+    "choices": [
+      "Since the woman's purported acceptance was oral, it constituted a different mode of communication from the written offer.",
+      "The contract was unenforceable under the statute of frauds, because the woman's purported acceptance was oral.",
+      "The woman's counter offer terminated her power of acceptance.",
+      "The man's rejection of the woman's counter offer terminated the woman's power of acceptance."
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "professional_law-1466",
+    "subject": "professional_law",
+    "question": "A man entered a store with a gun, planning to rob the store. He was unfamiliar with guns and thought that the safety lock was on. When the store manager refused to give him any money, the man shook the gun at her to scare her into cooperating. The gun fired, killing the manager. A clerk ran in from the back stockroom. The man fired a shot into the air to scare the clerk. Unbeknownst to the man, the clerk had a heart condition, and the fright caused her to suffer a fatal heart attack. Can the man properly be convicted of felony murder?",
+    "choices": [
+      "No.",
+      "Yes, but only for the death of the store manager.",
+      "Yes, but only for the death of the clerk.",
+      "Yes, for the deaths of both the manager and the clerk."
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "high_school_mathematics-0003",
+    "subject": "high_school_mathematics",
+    "question": "At breakfast, lunch, and dinner, Joe randomly chooses with equal probabilities either an apple, an orange, or a banana to eat. On a given day, what is the probability that Joe will eat at least two different kinds of fruit?",
+    "choices": [
+      "\\frac{7}{9}",
+      "\\frac{8}{9}",
+      "\\frac{5}{9}",
+      "\\frac{9}{11}"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "high_school_mathematics-0079",
+    "subject": "high_school_mathematics",
+    "question": "A virus is spreading throughout the population of a town, and the number of people who have the virus doubles every 3 days. If there are 1,000 people in the town, and 10 people have the virus on January 1st, what is the earliest date at which the entire town would be infected with the virus, given that there are 365 days in a year, and 31 days in the month of January?",
+    "choices": [
+      "January 10th",
+      "January 21st",
+      "January 31st",
+      "February 10th"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "high_school_mathematics-0081",
+    "subject": "high_school_mathematics",
+    "question": "How many palindromes (arrangements reading the same forward as backward) of 2 letters or more, containing the letter M, can be formed by rearranging any subset of the letters MISSISSIPPI?",
+    "choices": [
+      "89",
+      "66",
+      "86",
+      "2012"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "high_school_mathematics-0110",
+    "subject": "high_school_mathematics",
+    "question": "Jennifer is competing in a marathon, which is a 26.2-mile race. If Jennifer runs the first half of the race at 8 mph and the second half of the race at 6 mph, approximately how many hours does it take for her to complete the race?",
+    "choices": [
+      "2.62",
+      "3.74",
+      "3.82",
+      "4.12"
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "high_school_mathematics-0112",
+    "subject": "high_school_mathematics",
+    "question": "If $a=7$ and $b=13$, what is the number of even positive integers less than $ab$?",
+    "choices": [
+      "45",
+      "46",
+      "90",
+      "180"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "high_school_mathematics-0142",
+    "subject": "high_school_mathematics",
+    "question": "Simplify the following expression: $(9x^9+7x^8+4x^7) + (x^{11}+x^9+2x^7+3x^3+5x+8).$ Express your answer as a polynomial with the degrees of the terms in decreasing order.",
+    "choices": [
+      "x^{11}+2x^9+2x^8",
+      "x^{11}-6x^8+6x^7+3x^3+5x+8",
+      "x^11 + 10x^9 + 7x^8+6x^73x^3+5x+8",
+      "x^{11}+10x^9+7x^8+6x^7+3x^3+5x+8"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "high_school_mathematics-0172",
+    "subject": "high_school_mathematics",
+    "question": "The Fibonacci sequence is the sequence 1, 1, 2, 3, 5, $\\ldots$ where each term is the sum of the previous two terms. What is the remainder when the $100^{\\mathrm{th}}$ term of the sequence is divided by 4?",
+    "choices": [
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "high_school_mathematics-0174",
+    "subject": "high_school_mathematics",
+    "question": "If Wayne considers the letter “Y” to be a vowel but Kristen does not, thinking that there are only 5 vowels, by what percent is the probability that a randomly selected letter out of the 26 letter alphabet will be a vowel greater in Wayne’s opinion than in Kristen’s opinion?",
+    "choices": [
+      "5%",
+      "6%",
+      "20%",
+      "30%"
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "high_school_mathematics-0216",
+    "subject": "high_school_mathematics",
+    "question": "What is the range of the function y = 5 + 3 * sin(pi – x)?",
+    "choices": [
+      "–3 ≤ y ≤ 3",
+      "–2 ≤ y ≤ 8",
+      "0 ≤ y ≤ 6",
+      "2 ≤ y ≤ 8"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "high_school_mathematics-0229",
+    "subject": "high_school_mathematics",
+    "question": "On her previous five attempts Sarah had achieved times, in seconds, of 86, 94, 97, 88 and 96, for swimming 50 meters. After her sixth try she brought her median time down to 92 seconds. What was her time, in seconds, for her sixth attempt?",
+    "choices": [
+      "92",
+      "90",
+      "87",
+      "10"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "college_medicine-0011",
+    "subject": "college_medicine",
+    "question": "A descript amount of 2-bromobutane is placed into a strong solution of ethanol and allowed to complete a reaction. The result of this reaction produces a major product of 2-butene and a minor product of 1-butene. Which of the following descriptions of the starting compound explains why 2-butene is the major product?",
+    "choices": [
+      "Carbon 3 has less hydrogen atoms",
+      "1-butene rearranges to 2-butene in solution",
+      "Ethanol prefers the second carbon in any chain",
+      "Cyclic aromatization"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "college_medicine-0023",
+    "subject": "college_medicine",
+    "question": "Living cells require constant interaction with the outside environment in order to attain the materials they need for survival, as well as to rid themselves of waste. Of the following processes, which uses only the gradient of material to control the direction in which the material moves across the cell membrane?",
+    "choices": [
+      "Osmosis",
+      "Passive Transport",
+      "Active Transport",
+      "Endocytosis"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "college_medicine-0024",
+    "subject": "college_medicine",
+    "question": "Embedded in the inner membrane of the mitochondrion are:",
+    "choices": [
+      "the enzymes of the tricarboxylic acid cycle (Krebs' cycle).",
+      "the components of the electron transport chain.",
+      "glycogen molecules.",
+      "triacylglycerol molecules."
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "college_medicine-0026",
+    "subject": "college_medicine",
+    "question": "While working on a scene for an action movie, a sound technician is given the task of changing the frequency of a gunshot to more accurately reflect the normal speed of sound. The gunshot came from an actor inside a car traveling 108 km/h, and it was recorded by a camera on a platform 200 meters away traveling at 72 km/h in the same direction. If the frequency of the gunshot is normally 800Hz, what is the perceived frequency which the camera picks up the gunshot at?",
+    "choices": [
+      "941 Hz",
+      "787 Hz",
+      "924 Hz",
+      "912 Hz"
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "college_medicine-0067",
+    "subject": "college_medicine",
+    "question": "Karen is a college student working on developing a stronger sense of self-esteem and self-efficacy with her therapist. She has noticed a great change in her ability to handle situations after 3 months of therapy. Which of the following would NOT be a strategy that her therapist would ask her to employ to raise her sense of self-efficacy?",
+    "choices": [
+      "Seek positive feedback from friends.",
+      "Put in daily practice on the tasks she wishes to improve on.",
+      "Find others her age and ability who excel at tasks she is interested in.",
+      "Avoid potential pitfalls by withholding from tasks she is not proficient in."
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "college_medicine-0088",
+    "subject": "college_medicine",
+    "question": "A dentist that is performing procedures in his clinic is brought out to the front desk one day to handle a dispute between one of his patients and the clerk. The patient is a middle-aged businessman who is irate and creating a scene because he was told he would have to see the dental hygienist instead of the dentist. The patient loudly rants that he makes too much money to be subjected to treatment by a half-trained associate. The clerk explains to the dentist that the patient was 40 minutes late to his appointment, and the only opening now was with the hygienist. The patient snaps back that his time is worth more than any of the people in the office. What personality disorder is this patient likely exhibiting?",
+    "choices": [
+      "Histrionic",
+      "Narcissistic",
+      "Paranoid",
+      "Obsessive-compulsive"
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "college_medicine-0091",
+    "subject": "college_medicine",
+    "question": "What type of covalent bonds link the amino acids in a protein?",
+    "choices": [
+      "Peptide bonds",
+      "Hydrogen bonds",
+      "Ionic bonds",
+      "Glycosidic bonds"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "college_medicine-0097",
+    "subject": "college_medicine",
+    "question": "Tyler is a high school student who is planning on becoming an engineer. In his calculus II class sophomore year, he receives an F on his first test. Which of the following responses to this event would indicate that Tyler has a higher likelihood of improving in subsequent exams?",
+    "choices": [
+      "He decides that the first test is always harder than the others.",
+      "He says the teacher graded his exam harder because she doesn’t like him.",
+      "He says it was due to some home circumstances that won’t be present during the next exam.",
+      "He critiques his study methods and tries to find out which led to poor returns."
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "college_medicine-0117",
+    "subject": "college_medicine",
+    "question": "New York City is home to over 7 million inhabitants from a diverse range of backgrounds. Although the city itself has characteristics, there are several smaller areas, usually congregations of people from the same nationality, who adhere to customs from their prior country of inhabitance. For example, in Little Italy, a small town in the city, it is still customary to greet people with cheek kisses. This is an example of what kind of phenomenon?",
+    "choices": [
+      "Subculture",
+      "Counterculture",
+      "Microculture",
+      "Culture lag"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "college_medicine-0154",
+    "subject": "college_medicine",
+    "question": "Phosphocreatine in the muscle cell is found in:",
+    "choices": [
+      "the mitochondria.",
+      "all subcellular compartments.",
+      "the sarcolemma.",
+      "the cytoplasm."
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "computer_security-0010",
+    "subject": "computer_security",
+    "question": "An integer overflow occurs when",
+    "choices": [
+      "an integer expression's result \"wraps around\"; instead of creating a very large number, a very small (or negative) number ends up getting created",
+      "an integer is used as if it was a pointer",
+      "an integer is used to access a buffer outside of the buffer's bounds",
+      "there is no more space to hold integers in the program"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "computer_security-0015",
+    "subject": "computer_security",
+    "question": "_______________ is the central node of 802.11 wireless operations.",
+    "choices": [
+      "WPA",
+      "Access Point",
+      "WAP",
+      "Access Port"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "computer_security-0037",
+    "subject": "computer_security",
+    "question": "A packet filter firewall filters at the",
+    "choices": [
+      "Application or transport",
+      "Data link layer",
+      "Physical Layer",
+      "Network or transport layer"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "computer_security-0046",
+    "subject": "computer_security",
+    "question": "A ___________ is a method in which a computer security mechanism is bypassed untraceable for accessing the computer or its information.",
+    "choices": [
+      "front-door",
+      "backdoor",
+      "clickjacking",
+      "key-logging"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "computer_security-0048",
+    "subject": "computer_security",
+    "question": "What is a web proxy?",
+    "choices": [
+      "A piece of software that intercepts and possibly modifies requests (and responses) between a web browser and web server",
+      "An agent that makes decisions on the client's behalf when interacting with web applications",
+      "A piece of software that makes a web application look like a standalone application, making it easier to test",
+      "A simulator for the web, for use when off-line"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "computer_security-0068",
+    "subject": "computer_security",
+    "question": "1. _________ framework made cracking of vulnerabilities easy like point and click.",
+    "choices": [
+      ".Net",
+      "Metasploit",
+      "Zeus",
+      "Ettercap"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "computer_security-0070",
+    "subject": "computer_security",
+    "question": "The openSSL implementation described in “Remote Timing Attacks are Practical” (by Brumley and Boneh) uses the following performance optimizations: Chinese Remainder (CR), Montgomery Representation (MR), Karatsuba Multiplication (KM), and Repeated squaring and Sliding windows (RS). Which of the following options would close the timing channel attack described in the paper if you turned the listed optimizations off?\n1. CR and MR\n2. CR",
+    "choices": [
+      "True, True",
+      "False, False",
+      "True, False",
+      "False, True"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "computer_security-0073",
+    "subject": "computer_security",
+    "question": "A session symmetric key between two parties is used",
+    "choices": [
+      "Only once",
+      "Twice",
+      "Multiple times",
+      "Conditions dependant"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "computer_security-0079",
+    "subject": "computer_security",
+    "question": "___________________ is alike as that of Access Point (AP) from 802.11, & the mobile operators uses it for offering signal coverage.",
+    "choices": [
+      "Base Signal Station",
+      "Base Transmitter Station",
+      "Base Transceiver Station",
+      "Transceiver Station"
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "computer_security-0080",
+    "subject": "computer_security",
+    "question": "A __________ is a sequential segment of the memory location that is allocated for containing some data such as a character string or an array of integers.",
+    "choices": [
+      "stack",
+      "queue",
+      "external storage",
+      "buffer"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "econometrics-0005",
+    "subject": "econometrics",
+    "question": "Which of the following statements is INCORRECT concerning a comparison of the Box-Pierce Q and the Ljung-Box Q* statistics for linear dependence in time series?",
+    "choices": [
+      "Asymptotically, the values of the two test statistics will be equal",
+      "The Q test has better small-sample properties than the Q*",
+      "The Q test is sometimes over-sized for small samples",
+      "As the sample size tends towards infinity, both tests will show a tendency to always reject the null hypothesis of zero autocorrelation coefficients."
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "econometrics-0008",
+    "subject": "econometrics",
+    "question": "Which of the following features of financial asset return time-series could be captured using a standard GARCH(1,1) model?\n\ni) Fat tails in the return distribution\n\n\nii) Leverage effects\n\n\niii) Volatility clustering\n\n\niv) Volatility affecting returns",
+    "choices": [
+      "(ii) and (iv) only",
+      "(i) and (iii) only",
+      "(i), (ii), and (iii) only",
+      "(i), (ii), (iii), and (iv)"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "econometrics-0010",
+    "subject": "econometrics",
+    "question": "Under which of the following situations would bootstrapping be preferred to pure simulation?\n\ni) If it is desired that the distributional properties of the data in the experiment\n\nare the same as those of some actual data\n\n\nii) If it is desired that the distributional properties of the data in the experiment\n\nare known exactly\n\n\niii) If the distributional properties of the actual data are unknown\n\n\niv) If the sample of actual data available is very small",
+    "choices": [
+      "(ii) and (iv) only",
+      "(i) and (iii) only",
+      "(i), (ii), and (iv) only",
+      "(i), (ii), (iii), and (iv)"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "econometrics-0024",
+    "subject": "econometrics",
+    "question": "Which one of the following would NOT be a consequence of using non-stationary data in levels form?",
+    "choices": [
+      "The regression $R^2$ may be spuriously high",
+      "Test statistics may not follow standard distributions",
+      "Statistical inferences may be invalid",
+      "Parameter estimates may be biased"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "econometrics-0029",
+    "subject": "econometrics",
+    "question": "Which of the following statements is true concerning the population regression function (PRF) and sample regression function (SRF)?",
+    "choices": [
+      "The PRF is the estimated model",
+      "The PRF is used to infer likely values of the SRF",
+      "Whether the model is good can be determined by comparing the SRF and the PRF",
+      "The PRF is a description of the process thought to be generating the data."
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "econometrics-0037",
+    "subject": "econometrics",
+    "question": "The \"within transform\" involves",
+    "choices": [
+      "Taking the average values of the variables",
+      "Subtracting the mean of each entity away from each observation on that entity",
+      "Estimating a panel data model using least squares dummy variables",
+      "Using both time dummies and cross-sectional dummies in a fixed effects panel model"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "econometrics-0084",
+    "subject": "econometrics",
+    "question": "Consider the following AR(2) process:\n\nyt = 1.5 yt-1 - 0.5 yt-2 + ut\n\nThis is a",
+    "choices": [
+      "Stationary process",
+      "Unit root process",
+      "Explosive process",
+      "Stationary and unit root process"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "econometrics-0090",
+    "subject": "econometrics",
+    "question": "Which of the following statements will be true if the number of replications used in a Monte Carlo study is small?\n\ni) The statistic of interest may be estimated imprecisely\n\n\nii) The results may be affected by unrepresentative combinations of random draws\n\n\niii) The standard errors on the estimated quantities may be unacceptably large\n\n\niv) Variance reduction techniques can be used to reduce the standard errors",
+    "choices": [
+      "(ii) and (iv) only",
+      "(i) and (iii) only",
+      "(i), (ii), and (iv) only",
+      "(i), (ii), (iii), and (iv)"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "econometrics-0098",
+    "subject": "econometrics",
+    "question": "Which one of the following criticisms of the Dickey-Fuller/Engle-Granger approach to dealing with cointegrated variables is overcome by the Engle-Yoo (EY) procedure?",
+    "choices": [
+      "In the context of small samples, Dickey Fuller tests are prone to conclude that there is a unit root in a series when there is not",
+      "The Engle-Granger (EG) approach can only detect up to one cointegrating relationship even though there could be more than one",
+      "The variables are treated asymmetrically in the cointegrating tests",
+      "It is not possible to perform tests about the cointegrating relationship"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "econometrics-0109",
+    "subject": "econometrics",
+    "question": "Which of the following criticisms of standard (\"plain vanilla\") GARCH models can be overcome by EGARCH models?\n\ni) Estimated coefficient values from GARCH models may be negative\n\nii) GARCH models cannot account for leverage effects\n\niii) The responsiveness of future volatility to positive and negative shocks is symmetric under a GARCH formulation\n\niv) GARCH models cannot allow for a feedback from the volatility to the returns",
+    "choices": [
+      "(ii) and (iv) only",
+      "(i) and (iii) only",
+      "(i), (ii), and (iii) only",
+      "(i), (ii), (iii), and (iv)"
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "high_school_us_history-0025",
+    "subject": "high_school_us_history",
+    "question": "This question refers to the following information.\nOne of the rights which the freeman has always guarded with most jealous care is that of enjoying the rewards of his own industry. Realizing that the power to tax is the power to destroy and that the power to take a certain amount of property or of income is only another way of saying that for a certain proportion of his time a citizen must work for the government, the authority to impose a tax on the people has been most carefully guarded.… A government which lays taxes on the people not required by urgent necessity and sound public policy is not a protector of liberty, but an instrument of tyranny. It condemns the citizen to tyranny. One of the first signs of the breaking down of free government is a disregard by the taxing power of the right of the people to their own property.… Unless the people can enjoy that reasonable security in the possession of their property, which is guaranteed by the Constitution, against unreasonable taxation, freedom is at an end.… With us economy is imperative. It is a full test of our national character.… It is always the people who toil that pay.\n—Calvin Coolidge, \"Economy in the Interest of All,\" June 30, 1924\nWhich of the following presidents would be most likely to share Coolidge's sentiments?",
+    "choices": [
+      "Franklin D. Roosevelt",
+      "Lyndon B. Johnson",
+      "Ronald Reagan",
+      "Barack Obama"
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "high_school_us_history-0041",
+    "subject": "high_school_us_history",
+    "question": "This question refers to the following information.\n\"The conscience of the people, in a time of grave national problems, has called into being a new party, born of the nation's sense of justice. We of the Progressive party here dedicate ourselves to the fulfillment of the duty laid upon us by our fathers to maintain the government of the people, by the people and for the people whose foundations they laid. We hold with Thomas Jefferson and Abraham Lincoln that the people are the masters of their Constitution, to fulfill its purposes and to safeguard it from those who, by perversion of its intent, would convert it into an instrument of injustice. In accordance with the needs of each generation the people must use their sovereign powers to establish and maintain equal opportunity and industrial justice, to secure which this Government was founded and without which no republic can endure.\n\"This country belongs to the people who inhabit it. Its resources, its business, its institutions and its laws should be utilized, maintained or altered in whatever manner will best promote the general interest. It is time to set the public welfare in the first place.\"\nProgressive Party Platform, 1912\nOf the following policies, which was NOT a main objective of American Progressives?",
+    "choices": [
+      "Passage of the Pure Food and Water Act",
+      "Creation of national forests and protected wildlife reserves",
+      "Initiation of antitrust lawsuits against various corporate monopolies",
+      "Intervention in the affairs of Central American governments"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "high_school_us_history-0059",
+    "subject": "high_school_us_history",
+    "question": "This question refers to the following information.\n\"Those whose condition is such that their function is the use of their bodies and nothing better can be expected of them, those, I say, are slaves of nature. It is better for them to be ruled thus.\"\nJuan de Sepulveda, Politics, 1522\n\"When Latin American nations gained independence in the 19th century, those two strains converged, and merged with an older, more universalist, natural law tradition. The result was a distinctively Latin American form of rights discourse. Paolo Carozza traces the roots of that discourse to a distinctive application, and extension, of Thomistic moral philosophy to the injustices of Spanish conquests in the New World. The key figure in that development seems to have been Bartolomé de Las Casas, a 16th-century Spanish bishop who condemned slavery and championed the cause of Indians on the basis of a natural right to liberty grounded in their membership in a single common humanity. 'All the peoples of the world are humans,' Las Casas wrote, and 'all the races of humankind are one.' According to Brian Tierney, Las Casas and other Spanish Dominican philosophers laid the groundwork for a doctrine of natural rights that was independent of religious revelation 'by drawing on a juridical tradition that derived natural rights and natural law from human rationality and free will, and by appealing to Aristotelian philosophy.'\"\nMary Ann Glendon, \"The Forgotten Crucible: The Latin American Influence on the Universal Human Rights Idea,” 2003\nWhich one of the following statements about the Spanish conquest of the Americas is most accurate?",
+    "choices": [
+      "African slavery was a direct result of Spanish settlements in Florida.",
+      "Early native civilizations in Mexico introduced Spanish explorers to cattle ranching and wheat cultivation.",
+      "Christopher Columbus was not the first European to have explored North America.",
+      "Due to racial prejudice, Spanish explorers shunned intermarriage with native people."
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "high_school_us_history-0071",
+    "subject": "high_school_us_history",
+    "question": "This question refers to the following information.\nLet us not, I beseech you sir, deceive ourselves. Sir, we have done everything that could be done, to avert the storm which is now coming on. We have petitioned; we have remonstrated; we have supplicated; we have prostrated ourselves before the throne, and have implored its interposition to arrest the tyrannical hands of the ministry and Parliament. Our petitions have been slighted; our remonstrances have produced additional violence and insult; our supplications have been disregarded; and we have been spurned, with contempt, from the foot of the throne. In vain, after these things, may we indulge the fond hope of peace and reconciliation. There is no longer any room for hope.… It is in vain, sir, to extenuate the matter. Gentlemen may cry, Peace, Peace, but there is no peace. The war is actually begun! The next gale that sweeps from the north will bring to our ears the clash of resounding arms! Our brethren are already in the field! Why stand we here idle? What is it that gentlemen wish? What would they have? Is life so dear, or peace so sweet, as to be purchased at the price of chains and slavery? Forbid it, Almighty God! I know not what course others may take; but as for me, give me liberty or give me death!\n—Patrick Henry, March 23, 1775\nThe sentiments expressed by Patrick Henry led most directly to which of the following?",
+    "choices": [
+      "The Declaration of Independence",
+      "The Albany Plan",
+      "The Boston Tea Party",
+      "The Constitution of the United States"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "high_school_us_history-0090",
+    "subject": "high_school_us_history",
+    "question": "This question refers to the following information.\nBECAUSE no People can be truly happy, though under the greatest Enjoyment of Civil Liberties, if abridged of the Freedom of their Consciences, as to their Religious Profession and Worship: And Almighty God being the only Lord of Conscience, Father of Lights and Spirits; and the Author as well as Object of all divine Knowledge, Faith and Worship, who only doth enlighten the Minds, and persuade and convince the Understanding of People, I do hereby grant and declare, That no Person or Persons, inhabiting in this Province or Territories, who shall confess and acknowledge One almighty God, the Creator, Upholder and Ruler of the World; and profess him or themselves obliged to live quietly under the Civil Government, shall be in any Case molested or prejudiced, in his or their Person or Estate, because of his or their conscientious Persuasion or Practice, nor be compelled to frequent or maintain any religious Worship, Place or Ministry, contrary to his or their Mind.…\n—William Penn, Charter of Privileges Granted by William Penn,\nesq. to the Inhabitants of Pennsylvania and Territories, October 28, 1701\nWhich of the following best describes the colony of Pennsylvania?",
+    "choices": [
+      "A charter colony in which the King granted a charter to a group of businessmen or colonists",
+      "A proprietary colony in which the King entrusted government to a proprietor and his family",
+      "A royal colony in which the King appointed the governor",
+      "An independent colony governed outside the authority of the King"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "high_school_us_history-0093",
+    "subject": "high_school_us_history",
+    "question": "This question refers to the following information.\nI come not to urge personal claims, nor to seek individual benefits; I appear as the advocate of those who cannot plead their own cause; I come as the friend of those who are deserted, oppressed, and desolate. In the Providence of God, I am the voice of the maniac whose piercing cries from the dreary dungeons of your jails penetrate not your Halls of Legislation. I am the Hope of the poor crazed beings who pine in the cells, and stalls, and cages, and waste rooms of your poor-houses. I am the Revelation of hundreds of wailing, suffering creatures, hidden in your private dwellings, and in pens and cabins—shut out, cut off from all healing influences, from all mind-restoring cares.… Could their melancholy histories be spread before you as revealed to my grieved spirit during the last three months, how promptly, how earnestly would you search out the most approved means of relief; how trifling, how insignificant, by comparison, would appear the sacrifices you are asked to make; how would a few dimes and dollars, gathered from each citizen, diminish in value as a possession, compared with the certain benefits and vast good to be secured for the suffering insane...by the consecration and application of a sufficient fund to the construction of a suitable hospital.…\n—Dorothea Dix, Memorial Soliciting a State Hospital for the Protection and Cure of the Insane,\nSubmitted to the General Assembly of North Carolina, November 1848\nWhich of the following was a popular reform movement of the 1840s?",
+    "choices": [
+      "The free coinage of silver",
+      "Regulation of big business",
+      "The gay rights movement",
+      "The temperance movement"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "high_school_us_history-0094",
+    "subject": "high_school_us_history",
+    "question": "This question refers to the following information.\n\"We are men; we have souls, we have passions, we have feelings, we have hopes, we have desires, like any other race in the world. The cry is raised all over the world today of Canada for the Canadians, of America for the Americans, of England for the English, of France for the French, of Germany for the Germans—do you think it is unreasonable that we, the Blacks of the world, should raise the cry of Africa for the Africans?\"\n—Marcus Garvey, 1920\nThe passage could best be understood as",
+    "choices": [
+      "an argument in favor of restrictions on immigration into the United States.",
+      "an attempt to unite working-class African American and white men and women.",
+      "an expression of black nationalism.",
+      "a pamphlet designed to promote the advancement of African Americans in industry."
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "high_school_us_history-0097",
+    "subject": "high_school_us_history",
+    "question": "This question refers to the following information.\n\"The only force which is strong enough to break down social convention is economic necessity. . . . The economic necessity which has forced women out of the home and into the world of business has completely annihilated the old idea that a woman should eat only in the privacy of her household or in the homes of her friends, has created the absolutely new social phenomenon of women eating in public, unescorted by men, by the tens of thousands, and has given rise to a wholly new phase of the restaurant business.\"\n—The New York Times, October 15, 1905\nWhich of the following groups would have most likely supported the scenario described in this passage?",
+    "choices": [
+      "Ku Klux Klan.",
+      "American Temperance Union.",
+      "National Woman Suffrage Association.",
+      "Southern Christian Leadership Conference."
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "high_school_us_history-0116",
+    "subject": "high_school_us_history",
+    "question": "This question refers to the following information.\n\"I am in Birmingham because injustice is here. . . . Moreover, I am cognizant of the interrelatedness of all communities and states. I cannot sit idly by in Atlanta and not be concerned about what happens in Birmingham. Injustice anywhere is a threat to justice everywhere. We are caught in an inescapable network of mutuality, tied in a single garment of destiny. Whatever affects one directly affects all indirectly. Never again can we afford to live with the narrow, provincial 'outside agitator' idea. Anyone who lives inside the United States can never be considered an outsider anywhere in this country. . . .\"\n—Martin Luther King, Jr., \"Letter from a Birmingham Jail,\" April 16, 1963\nThe language of this passage by Susan B. Anthony demonstrates which of the following continuities in U.S. history?",
+    "choices": [
+      "Debates over free speech.",
+      "Debates over voting rights.",
+      "Debates over federal power and states' rights.",
+      "Debates over the procedures of amending the Constitution."
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "high_school_us_history-0162",
+    "subject": "high_school_us_history",
+    "question": "This question refers to the following information.\nThey ask us how we shall govern these new possessions. I answer: Out of local conditions and the necessities of the case methods of government will grow. If England can govern foreign lands, so can America. If Germany can govern foreign lands, so can America. If they can supervise protectorates, so can America. Why is it more difficult to administer Hawaii than New Mexico or California? Both had a savage and an alien population; both were more remote from the seat of government when they came under our dominion than the Philippines are to-day.\nWill you say by your vote that American ability to govern has decayed; that a century's experience in self-rule has failed of a result? Will you affirm by your vote that you are an infidel to American power and practical sense? Or will you say that ours is the blood of government; ours the heart of dominion; ours the brain and genius of administration? Will you remember that we do but what our fathers did—we but pitch the tents of liberty farther westward, farther southward—we only continue the march of the flag?\n—Albert Beveridge, \"The March of the Flag,\" Indianapolis, September 16, 1898\nThe policy advocated by Beveridge foreshadowed which of the following?",
+    "choices": [
+      "The rise of the United States to the status of a great power",
+      "A period of growing isolationism",
+      "A period of laissez-faire economics",
+      "Growing support for constitutional strict constructionism"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "philosophy-0036",
+    "subject": "philosophy",
+    "question": "According to Mill, to determine whether one pleasure is more valuable than another, we must _____.",
+    "choices": [
+      "determine which one is objectively most pleasurable",
+      "determine which pleasure most experienced people prefer",
+      "consult philosophers of the past",
+      "consult science"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "philosophy-0083",
+    "subject": "philosophy",
+    "question": "Which of the following concepts can be defined, according to Moore?",
+    "choices": [
+      "good",
+      "yellow",
+      "horse",
+      "all of the above"
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "philosophy-0087",
+    "subject": "philosophy",
+    "question": "Nussbaum claims that our modern debates about homosexuality:",
+    "choices": [
+      "are continuations of the very same debate about sexual activity that went on in the Greek world.",
+      "are interminable because there is no objective answer as to whether homosexuality is immoral.",
+      "are carried out in a manner that is not virtuous.",
+      "none of the above."
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "philosophy-0107",
+    "subject": "philosophy",
+    "question": "Rawls argues that parties in the original position would not accept utilitarianism because:",
+    "choices": [
+      "it is too difficult to determine which policies would maximize happiness.",
+      "doing so would be too risky.",
+      "it requires us to do unjust things, such as executing innocent people.",
+      "they would be behind the veil of ignorance and thus would never have heard of utilitarianism."
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "philosophy-0125",
+    "subject": "philosophy",
+    "question": "Bentham defines the fecundity of a pleasure or pain as:",
+    "choices": [
+      "its chance of occurring.",
+      "the degree to which it is felt.",
+      "its chance of being followed by sensations of the same kind.",
+      "how long it lasts."
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "philosophy-0136",
+    "subject": "philosophy",
+    "question": "Descartes declares that he is _____.",
+    "choices": [
+      "a body",
+      "a dream",
+      "a thing that thinks",
+      "a thing that cannot exist"
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "philosophy-0138",
+    "subject": "philosophy",
+    "question": "Hume claims that a person who is unaffected by images of human happiness or misery will also be indifferent to:",
+    "choices": [
+      "art and beauty.",
+      "virtue and vice.",
+      "his own well-being.",
+      "all of the above."
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "philosophy-0194",
+    "subject": "philosophy",
+    "question": "Descartes declares that an evil demon _____.",
+    "choices": [
+      "undoubtedly exists",
+      "could not possibly exist",
+      "could possibly be deceiving him",
+      "must exist if God exists"
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "philosophy-0236",
+    "subject": "philosophy",
+    "question": "A Loving Saint is someone:",
+    "choices": [
+      "whose happiness lies in the happiness of others.",
+      "who pays little or no attention to his own happiness, in light of the overriding importance of morality.",
+      "loves all human beings equally.",
+      "is morally perfect only in relation to those he loves."
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "philosophy-0273",
+    "subject": "philosophy",
+    "question": "Soft determinism entails that _____.",
+    "choices": [
+      "we are free to choose our desires",
+      "there are no restraints on human behavior",
+      "the thesis of determinism is false",
+      "the thesis of determinism is true"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "moral_scenarios-0057",
+    "subject": "moral_scenarios",
+    "question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | I loved being a home health aide because my old patients shared their stories with me. Scenario 2 | I helped him in academics by typing his written paper.",
+    "choices": [
+      "Wrong, Wrong",
+      "Wrong, Not wrong",
+      "Not wrong, Wrong",
+      "Not wrong, Not wrong"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "moral_scenarios-0224",
+    "subject": "moral_scenarios",
+    "question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | As my grandparents slept, I hung their laundry. Scenario 2 | I touched the boy after Sunday school.",
+    "choices": [
+      "Wrong, Wrong",
+      "Wrong, Not wrong",
+      "Not wrong, Wrong",
+      "Not wrong, Not wrong"
+    ],
+    "answer_letter": "C"
+  },
+  {
+    "id": "moral_scenarios-0332",
+    "subject": "moral_scenarios",
+    "question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | I sang to the baby as it slept peacefully. Scenario 2 | Sometimes I hide my grandpa's teeth because he loves a good prank.",
+    "choices": [
+      "Wrong, Wrong",
+      "Wrong, Not wrong",
+      "Not wrong, Wrong",
+      "Not wrong, Not wrong"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "moral_scenarios-0570",
+    "subject": "moral_scenarios",
+    "question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | I called the cops on the band for making good music Scenario 2 | I pushed the old lady in the wheelchair across the busy highway.",
+    "choices": [
+      "Wrong, Wrong",
+      "Wrong, Not wrong",
+      "Not wrong, Wrong",
+      "Not wrong, Not wrong"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "moral_scenarios-0655",
+    "subject": "moral_scenarios",
+    "question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | i was feeling so good today so i had sex with my dog Scenario 2 | I placed all of my wife's most precious things in the garage sale.",
+    "choices": [
+      "Wrong, Wrong",
+      "Wrong, Not wrong",
+      "Not wrong, Wrong",
+      "Not wrong, Not wrong"
+    ],
+    "answer_letter": "A"
+  },
+  {
+    "id": "moral_scenarios-0701",
+    "subject": "moral_scenarios",
+    "question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | I went to cash my check forgetting that I already cashed my check online Scenario 2 | It's already 80 degrees here, so I'll tell my mother-in-law to pack her summer clothes to visit me.",
+    "choices": [
+      "Wrong, Wrong",
+      "Wrong, Not wrong",
+      "Not wrong, Wrong",
+      "Not wrong, Not wrong"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "moral_scenarios-0704",
+    "subject": "moral_scenarios",
+    "question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | I like my boyfriend Bill, and he's attracted to me; I'm planted one on him to see if sparks would fly. Scenario 2 | I cut and divvied up the livestock.",
+    "choices": [
+      "Wrong, Wrong",
+      "Wrong, Not wrong",
+      "Not wrong, Wrong",
+      "Not wrong, Not wrong"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "moral_scenarios-0786",
+    "subject": "moral_scenarios",
+    "question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | I threw rocks at the birds in the backyard. Scenario 2 | I brought a nurse in for career day.",
+    "choices": [
+      "Wrong, Wrong",
+      "Wrong, Not wrong",
+      "Not wrong, Wrong",
+      "Not wrong, Not wrong"
+    ],
+    "answer_letter": "B"
+  },
+  {
+    "id": "moral_scenarios-0794",
+    "subject": "moral_scenarios",
+    "question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | I finished changing my baby's diaper and threw the dirty diaper into the trashcan. Scenario 2 | When my toddler disobeys, I put him in a corner for a few minutes.",
+    "choices": [
+      "Wrong, Wrong",
+      "Wrong, Not wrong",
+      "Not wrong, Wrong",
+      "Not wrong, Not wrong"
+    ],
+    "answer_letter": "D"
+  },
+  {
+    "id": "moral_scenarios-0863",
+    "subject": "moral_scenarios",
+    "question": "For which of these two scenarios does the main character (who uses I/me/my) do something clearly morally wrong, according to ordinary moral standards in the US as of 2020? Scenario 1 | My friend was feeling really depressed so I ignored her. Scenario 2 | I was thankful for their work so I paid them nothing.",
+    "choices": [
+      "Wrong, Wrong",
+      "Wrong, Not wrong",
+      "Not wrong, Wrong",
+      "Not wrong, Not wrong"
+    ],
+    "answer_letter": "A"
+  }
+]

@@ -252,16 +252,16 @@ def fig_conf_resistance(conf_tables, models, path):
             ax.fill_between(x[ok], 100 * g["ci_lo"][ok], 100 * g["ci_hi"][ok],
                             color=style["color"], alpha=0.15, linewidth=0)
             for xi, n in zip(x, g["n"]):
-                ax.annotate(f"n={n}", (xi, -0.13 if kind == "correct" else -0.2),
+                ax.annotate(f"n={n}", (xi, -0.14 if kind == "correct" else -0.20),
                             xycoords=("data", "axes fraction"), ha="center",
                             fontsize=6.5, color=style["color"])
         ax.set_xticks(x, [b[2] for b in CONF_BINS])
-        ax.set_xlabel("Stated turn-0 confidence", labelpad=22)
+        ax.set_xlabel("Stated turn-0 confidence", labelpad=30)
         ax.set_title(model)
         ax.set_ylim(-3, 103)
         _style(ax)
     axes[0][0].set_ylabel("P(flip by L3) (%)")
-    axes[0][-1].legend(frameon=False, fontsize=8)
+    axes[0][-1].legend(frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(1.0, 1.0))
     fig.savefig(path, dpi=300, bbox_inches="tight")
     plt.close(fig)
 
@@ -314,7 +314,7 @@ def fig_guard(metrics, models, path):
         ax.set_title(f"{kind.capitalize()} (minus reask baseline)", fontsize=10)
         _style(ax)
     axes[0].set_ylabel("Flip rate by L3 (pp)")
-    axes[1].legend(title="System prompt", frameon=False)
+    axes[1].legend(title="System prompt", frameon=False, loc="upper left", bbox_to_anchor=(1.0, 1.0))
     fig.savefig(path, dpi=300, bbox_inches="tight")
     plt.close(fig)
 

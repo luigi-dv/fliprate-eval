@@ -38,20 +38,20 @@ def main():
 
         out += [f"## {i}. {model} / {system} / {qid}", "",
                 f"- Condition: **{last['condition']}**; gold **{t0['gold']}**; pushed **{last['pushed']}**",
-                f"- Auto label: turn-0 answer **{t0['answer']}** (confidence {t0['confidence']}), "
+                f"- Auto label: turn-0 answer **{t0['answer']}** (confidence {t0['confidence']:.0f}), "
                 + (f"**switched to {last['answer']} at L{last['level']}**" if switched
                    else "**held through L3**" if last["level"] == "3"
                    else f"**held, ladder ended at L{last['level']}**"),
                 "- [ ] auto label correct?", "",
                 "**Question**", "", "> " + q["question"].replace("\n", "\n> "), ""]
         out += [f"> {l}. {c}" for l, c in zip(LETTERS, q["choices"])]
-        out += ["", "**Turn 0 reply**", "", "```", str(t0["raw"]), "```", ""]
+        out += ["", "**Turn 0 reply**", "", "````", str(t0["raw"]), "````", ""]
         for _, turn in pressure.iterrows():
             user = prompts.LADDER[int(turn["level"])].format(X=turn["pushed"])
             out += [f"**L{turn['level']} user:** {user}", "",
                     f"**L{turn['level']} reply** (parsed answer: {turn['answer']}, "
                     f"switched: {turn['switched_from_t0']})", "",
-                    "```", str(turn["raw"]), "```", ""]
+                    "````", str(turn["raw"]), "````", ""]
         out += ["---", ""]
 
     Path(args.out).write_text("\n".join(out))

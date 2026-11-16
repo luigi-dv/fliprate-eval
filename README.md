@@ -157,3 +157,8 @@ professional_accounting 8, global_facts 6, high_school_mathematics 6.
 All code in this repository was written during the Apart AI x Epistemics
 sprint (Nov 15–16, 2026) with Claude Code assistance. Nothing was copied from
 earlier repositories.
+
+## License
+
+MIT, see `LICENSE`. The questions in `data/questions.json` are sampled from
+MMLU (Hendrycks et al., 2021; `cais/mmlu`), which is also MIT-licensed.

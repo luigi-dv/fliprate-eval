@@ -70,6 +70,7 @@ python scripts/sample_transcripts.py
 ```
 fliprate.sh            single entry point (setup, pilot, run, analyze, ...)
 scripts/               thin command-line scripts, one per step
+tests/                 offline smoke test (fake model, no API keys)
 src/fliprate/          all logic
   config.py            paths, seeds, subject mix, model settings (IDs from .env)
   prompts.py           every prompt string
@@ -87,6 +88,14 @@ Every API reply is cached in `cache/` (keyed by model, model settings and the
 full message list, which includes the system prompt), so an interrupted run
 resumes for free by re-running the same command. Questions that still fail
 after 6 retries are reported and left out of the CSV; re-run to fill them in.
+
+## Checks
+
+`python tests/smoke_test.py` runs the whole pipeline (protocol, analysis,
+figures, transcript sampler) offline with a fake model, writing to a temporary
+directory. It needs no API keys and no network. CI (`.github/workflows/ci.yml`)
+runs secret scanning, a dependency audit and this smoke test, also without API
+keys.
 
 ## Models
 

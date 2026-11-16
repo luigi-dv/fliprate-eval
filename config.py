@@ -43,31 +43,34 @@ SUBJECT_COUNTS = {
 N_BLOCKS = 2
 
 # Output limits. They must be generous enough that no reply is cut off before
-# its JSON ends. GPT-OSS and claude-opus-5-5 spend hidden reasoning tokens out
-# of the same limit, so they get more room.
-CLAUDE_MAX_TOKENS = 800
-CLAUDE_THINKING_MAX_TOKENS = 2000
+# its JSON ends. Every model spends hidden reasoning tokens out of the same limit.
+CLAUDE_MIN_THINKING_BUDGET = 1024  # smallest budget the API accepts
+CLAUDE_MAX_TOKENS = 2000           # thinking budget + room for the JSON answer
 GROQ_MAX_TOKENS = 1500
 
 
 def _anthropic_spec(model_id):
-    """Request settings that turn extended thinking off for a Claude model.
+    """Request settings for a Claude model: thinking ON at its lowest setting.
+
+    claude-opus-5-5 cannot run without thinking, so every Claude model thinks,
+    each at the lowest setting its API accepts:
+      - 5.x models: adaptive thinking at effort "low"
+      - 4.5 models: extended thinking with the minimum budget (1024 tokens)
+    Thinking tokens count against max_tokens, so the limit leaves room for the
+    full budget plus the JSON answer.
 
     `temperature` is never sent: the API version used by the installed SDK
     (2026-10-21) rejects it for every Claude model, including the 4.5 ones.
     """
     model_id = model_id or ""
-    if model_id.startswith(("claude-opus-5-5", "claude-fable", "claude-mythos")):
-        # These models cannot run without thinking (the API returns a 400 for
-        # thinking=disabled). Lowest effort is the closest available setting;
-        # thinking tokens count against max_tokens, hence the larger limit.
-        extra, max_tokens = {"output_config": {"effort": "low"}}, CLAUDE_THINKING_MAX_TOKENS
-    elif model_id.startswith("claude-sonnet-5-5"):
-        extra, max_tokens = {"thinking": {"type": "between_tools"}}, CLAUDE_MAX_TOKENS
+    if model_id.startswith(("claude-haiku-4-5", "claude-opus-4-5", "claude-sonnet-4-5")):
+        extra = {"thinking": {"type": "enabled", "budget_tokens": CLAUDE_MIN_THINKING_BUDGET}}
+    elif model_id.startswith(("claude-opus-5-5", "claude-fable", "claude-mythos")):
+        extra = {"output_config": {"effort": "low"}}  # thinking is always on
     else:
-        extra, max_tokens = {"thinking": {"type": "disabled"}}, CLAUDE_MAX_TOKENS
+        extra = {"thinking": {"type": "adaptive"}, "output_config": {"effort": "low"}}
     return {"provider": "anthropic", "id": model_id, "temperature": None,
-            "max_tokens": max_tokens, "extra": extra}
+            "max_tokens": CLAUDE_MAX_TOKENS, "extra": extra}
 
 
 def _groq_spec(model_id):
@@ -86,17 +89,18 @@ MODELS = {
     "gpt-oss-lg": _groq_spec(os.environ.get("GROQ_OPEN_AI_MODEL_LG")),
 }
 
-def thinks(model_key):
-    """True if the model reasons before answering in our calls.
-
-    Thinking is switched off wherever the API allows it. It cannot be switched
-    off for claude-opus-5-5 (runs at the lowest effort) or for the GPT-OSS
-    models (reasoning effort low).
-    """
+def thinking_setting(model_key):
+    """Short description of how the model reasons before answering in our calls."""
     spec = MODELS[model_key]
     if spec["provider"] == "groq":
-        return True
-    return spec["extra"].get("thinking", {}).get("type") not in ("disabled", "between_tools")
+        return f"on, reasoning effort {spec['extra']['reasoning_effort']}"
+    thinking = spec["extra"].get("thinking", {})
+    if thinking.get("type") == "enabled":
+        return f"on, extended thinking, budget {thinking['budget_tokens']} tokens (minimum)"
+    if thinking.get("type") in ("disabled", "between_tools"):
+        return "off"
+    effort = spec["extra"].get("output_config", {}).get("effort", "default")
+    return f"on, adaptive, effort {effort}"
 
 
 # Concurrent requests per provider. Groq's free tier is tightly rate limited.

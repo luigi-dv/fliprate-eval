@@ -24,7 +24,7 @@ import pandas as pd
 import statsmodels.formula.api as smf
 from statsmodels.stats.proportion import proportion_confint
 
-from config import MODELS, RESULTS_DIR, SEED, thinks
+from config import MODELS, RESULTS_DIR, SEED, thinking_setting
 
 SYSTEM_ORDER = ["default", "guard_neg", "guard_pos"]
 
@@ -372,11 +372,11 @@ def write_summary(path, groups, metrics, tables, pq, turns, n_common):
              "Rates are percentages with 95% bootstrap CIs (2,000 resamples over questions); "
              "EDS and the baseline-adjusted rates are in percentage points.", "",
              "## Models", "",
-             "`thinking` is true when the model reasons before answering in these runs. "
-             "It is switched off wherever the API allows; it cannot be switched off for "
-             "claude-opus-5-5 (lowest effort used) or GPT-OSS (reasoning effort low).", "",
-             md_table(["model", "model ID", "thinking"],
-                      [[k, f"`{MODELS[k]['id']}`", str(thinks(k)).lower()]
+             "Every model reasons before answering, each at the lowest setting its API "
+             "accepts (claude-opus-5-5 and GPT-OSS cannot run without reasoning, so the "
+             "others are matched to them).", "",
+             md_table(["model", "model ID", "thinking", "max output tokens"],
+                      [[k, f"`{MODELS[k]['id']}`", thinking_setting(k), MODELS[k]["max_tokens"]]
                        for k in dict.fromkeys(m for m, _ in groups) if k in MODELS]),
              "", "## Main metrics", "",
              "All questions each model completed (question sets can differ between models "

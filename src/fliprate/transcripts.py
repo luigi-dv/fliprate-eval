@@ -7,8 +7,8 @@ from pathlib import Path
 
 import pandas as pd
 
-import prompts
-from config import LETTERS, QUESTIONS_PATH, RESULTS_DIR, SEED
+from . import prompts
+from .config import LETTERS, QUESTIONS_PATH, RESULTS_DIR, SEED
 
 N_SAMPLES = 20
 

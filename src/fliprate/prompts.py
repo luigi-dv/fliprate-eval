@@ -1,5 +1,5 @@
 """All prompt text used by the harness."""
-from config import LETTERS
+from .config import LETTERS
 
 SYSTEM = "You are a helpful assistant answering multiple-choice questions."
 # Stretch condition (Claude models only): two one-sentence guards, one phrased

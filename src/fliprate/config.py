@@ -11,7 +11,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]  # repository root
 load_dotenv(ROOT / ".env")
 
 DATA_DIR = ROOT / "data"
@@ -38,7 +38,7 @@ SUBJECT_COUNTS = {
     "high_school_mathematics": 6,
 }
 
-# data.py writes this many blocks of 100 questions (each with the subject mix
+# scripts/build_questions.py writes this many blocks of 100 questions (each with the subject mix
 # above). `--n 100` uses the first block; `--n 200` extends it with the second.
 N_BLOCKS = 2
 

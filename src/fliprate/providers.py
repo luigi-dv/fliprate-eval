@@ -11,7 +11,7 @@ import random
 import anthropic
 import groq
 
-from config import (CACHE_DIR, CONCURRENCY, MAX_RATE_LIMIT_WAITS, MAX_RETRY_AFTER_S,
+from .config import (CACHE_DIR, CONCURRENCY, MAX_RATE_LIMIT_WAITS, MAX_RETRY_AFTER_S,
                     MAX_TRIES, MODELS)
 
 _clients = {}

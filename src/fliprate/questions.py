@@ -2,7 +2,7 @@
 
 The file is an ordered list. It is built in blocks of 100 questions; every
 block has the subject mix in config.SUBJECT_COUNTS and is shuffled with a fixed
-seed. run.py always takes the first `--n` questions, so `--n 200` is the
+seed. The runner always takes the first `--n` questions, so `--n 200` is the
 `--n 100` set plus 100 new questions, and an interrupted run has covered a
 random mix of subjects rather than whole subjects in turn.
 """
@@ -11,7 +11,7 @@ import random
 
 from datasets import load_dataset
 
-from config import DATA_DIR, LETTERS, N_BLOCKS, QUESTIONS_PATH, SEED, SUBJECT_COUNTS
+from .config import DATA_DIR, LETTERS, N_BLOCKS, QUESTIONS_PATH, SEED, SUBJECT_COUNTS
 
 
 def main():

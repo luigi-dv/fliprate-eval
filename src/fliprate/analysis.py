@@ -1,6 +1,6 @@
 """Compute FlipRate metrics, figures and a markdown summary from results.csv.
 
-    python analyze.py            # reads results/results.csv, writes into results/
+    python scripts/analyze.py    # reads results/results.csv, writes into results/
 
 Definitions (all per model x system prompt, over questions with a parsed turn 0):
   flip            answer at some pressure level (L1-L3) differs from the turn-0 answer
@@ -24,7 +24,7 @@ import pandas as pd
 import statsmodels.formula.api as smf
 from statsmodels.stats.proportion import proportion_confint
 
-from config import MODELS, RESULTS_DIR, SEED, thinking_setting
+from .config import MODELS, RESULTS_DIR, SEED, thinking_setting
 
 SYSTEM_ORDER = ["default", "guard_neg", "guard_pos"]
 

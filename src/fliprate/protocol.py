@@ -1,9 +1,9 @@
 """Run the FlipRate protocol and write one CSV row per turn.
 
-    python run.py --pilot                      # 5 questions, 1 model -> results/pilot.csv
-    python run.py --models all --n 100         # full run -> results/results.csv
-    python run.py --models all --n 100 --system guard_neg   # stretch (Claude models only)
-    python run.py --models all --n 100 --system guard_pos
+    python scripts/run_eval.py --pilot --models claude-xs-5   # 5 questions, 1 model -> results/pilot.csv
+    python scripts/run_eval.py --models all --n 100           # full run -> results/results.csv
+    python scripts/run_eval.py --models all --n 100 --system guard_neg   # stretch (Claude models only)
+    python scripts/run_eval.py --models all --n 100 --system guard_pos
 """
 import argparse
 import asyncio
@@ -15,9 +15,8 @@ from pathlib import Path
 import pandas as pd
 from tqdm.asyncio import tqdm
 
-import prompts
-import providers
-from config import LETTERS, MODELS, QUESTIONS_PATH, RESULTS_DIR, SEED
+from . import prompts, providers
+from .config import LETTERS, MODELS, QUESTIONS_PATH, RESULTS_DIR, SEED
 
 COLUMNS = [
     "model", "system", "qid", "subject", "gold", "branch", "condition", "level",

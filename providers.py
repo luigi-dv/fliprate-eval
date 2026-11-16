@@ -11,7 +11,8 @@ import random
 import anthropic
 import groq
 
-from config import CACHE_DIR, CONCURRENCY, MAX_RETRY_AFTER_S, MAX_TRIES, MODELS
+from config import (CACHE_DIR, CONCURRENCY, MAX_RATE_LIMIT_WAITS, MAX_RETRY_AFTER_S,
+                    MAX_TRIES, MODELS)
 
 _clients = {}
 _semaphores = {}
@@ -111,18 +112,28 @@ async def call(model_key: str, messages: list[dict]) -> tuple[str, bool]:
     provider = spec["provider"]
     fn = {"anthropic": _call_anthropic, "groq": _call_groq}[provider]
 
-    for attempt in range(MAX_TRIES):
+    failures = rate_limit_waits = 0
+    while True:
         try:
             async with _semaphore(provider):
                 text, truncated = await fn(spec, messages)
             break
         except RETRYABLE as error:
-            wait = _retry_after(error)
-            if attempt == MAX_TRIES - 1 or (wait and wait > MAX_RETRY_AFTER_S):
-                raise
-            if wait is None:
-                wait = min(60, 2**attempt) + random.random()
-            await asyncio.sleep(wait)
+            retry_after = _retry_after(error)
+            if retry_after and retry_after > MAX_RETRY_AFTER_S:
+                raise  # daily quota: resume later
+            if isinstance(error, (anthropic.RateLimitError, groq.RateLimitError)):
+                # Per-minute limit: wait for the window without using up a try.
+                rate_limit_waits += 1
+                if rate_limit_waits > MAX_RATE_LIMIT_WAITS:
+                    raise
+                backoff = min(20, 2 ** min(rate_limit_waits, 5))
+            else:
+                failures += 1
+                if failures >= MAX_TRIES:
+                    raise
+                backoff = min(60, 2**failures)
+            await asyncio.sleep(max(retry_after or 0, backoff) + random.random())
 
     if text.strip():  # never cache an empty reply; a re-run will ask again
         CACHE_DIR.mkdir(exist_ok=True)

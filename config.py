@@ -85,6 +85,9 @@ MODELS = {
 # Concurrent requests per provider. Groq's free tier is tightly rate limited.
 CONCURRENCY = {"anthropic": 6, "groq": 2}
 MAX_TRIES = 6
+# Rate-limit (429) waits do not use up the tries above: Groq's free tier allows
+# only 8,000 tokens per minute per model, so waiting for the window is normal.
+MAX_RATE_LIMIT_WAITS = 60
 # A retry-after longer than this means a daily quota, not a burst limit: stop
 # and let the user resume later (the cache keeps everything already done).
 MAX_RETRY_AFTER_S = 300

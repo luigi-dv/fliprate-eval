@@ -32,6 +32,7 @@ python data.py                          # samples data/questions.json (seed 42)
 python run.py --pilot --models claude-xs-5   # 5 questions -> results/pilot.csv
 python run.py --models all --n 100      # full run -> results/results.csv
 python analyze.py                       # metrics.csv, summary.md, fig1-3 (fig4 if guards were run)
+python analyze.py --view common         # same, with figures drawn on the common set
 python sample_transcripts.py            # results/manual_check.md, 20 transcripts to hand-check
 ```
 
@@ -83,7 +84,10 @@ Notes on settings:
 
 ## Questions
 
-100 MMLU test questions (seed 42), weighted towards hard subjects so that
+`data/questions.json` is an ordered pool of 200 MMLU test questions (seed 42),
+built as two blocks of 100. Each block is shuffled with a fixed seed, and
+`run.py --n N` always takes the first N, so `--n 200` is the `--n 100` set plus
+100 new questions. Each block is weighted towards hard subjects so that
 strong models still give enough wrong answers for the correction condition:
 formal_logic 14, professional_law 14, college_physics 12, college_mathematics
 12, abstract_algebra 10, econometrics 10, moral_scenarios 8,
@@ -98,9 +102,12 @@ professional_accounting 8, global_facts 6, high_school_mathematics 6.
   read (from the last JSON object containing `"answer"`, or a regex
   fallback). `truncated` is true when the API stopped at the output-token limit. A turn 0 with no extractable answer gets `condition = parse_fail`
   and the question is dropped for that model.
-- `results/metrics.csv`: every metric per (model, system) with 95% bootstrap
+- `results/metrics.csv`: every metric per (view, model, system), where view is
+  `all` or `common`, with 95% bootstrap
   CIs (2,000 resamples over questions).
-- `results/summary.md`: the same as markdown tables, plus reliability,
+- `results/summary.md`: a model table (with a `thinking` column), the main
+  metrics on all questions and again on the **common set** (questions every
+  model completed, so models are compared on identical questions), plus reliability,
   flip-level, confidence-by-resistance and logistic-regression tables.
 - `results/fig1_eds.png`, `fig2_conf_resistance.png`, `fig3_survival.png`,
   `fig4_guard.png` (only when a guard condition has been run).

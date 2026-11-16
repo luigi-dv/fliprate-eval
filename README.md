@@ -152,13 +152,24 @@ professional_accounting 8, global_facts 6, high_school_mathematics 6.
 - `results/fig1_eds.png`, `fig2_conf_resistance.png`, `fig3_survival.png`,
   `fig4_guard.png` (only when a guard condition has been run).
 
+## Report tables and figures
+
+The tables and figures in the report come from two extra scripts, which read
+`results/results.csv` only:
+
+```bash
+python scripts/report_figures.py   # -> results/report/numbers.json, tables.md, fig1-3
+python scripts/audit_labels.py     # independent re-parse of every reply and protocol check
+```
+
+`report_figures.py` uses a fixed seed per model and system prompt, so its
+intervals are reproducible. They can differ in the last digit from
+`results/summary.md`, which draws its bootstrap samples in a different order.
+Where a count is zero it reports a Wilson interval, because the bootstrap
+interval is empty. Both scripts were written with Claude during the sprint.
+
 ## Built during the sprint (Nov 15–16, 2026)
 
 All code in this repository was written during the Apart AI x Epistemics
 sprint (Nov 15–16, 2026) with Claude Code assistance. Nothing was copied from
 earlier repositories.
-
-## License
-
-MIT, see `LICENSE`. The questions in `data/questions.json` are sampled from
-MMLU (Hendrycks et al., 2021; `cais/mmlu`), which is also MIT-licensed.

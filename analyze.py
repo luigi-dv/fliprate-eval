@@ -24,7 +24,7 @@ import pandas as pd
 import statsmodels.formula.api as smf
 from statsmodels.stats.proportion import proportion_confint
 
-from config import MODELS, RESULTS_DIR, SEED
+from config import MODELS, RESULTS_DIR, SEED, thinks
 
 SYSTEM_ORDER = ["default", "guard_neg", "guard_pos"]
 
@@ -354,13 +354,8 @@ def fmt(value, lo=None, hi=None, kind="pct"):
     return text
 
 
-def write_summary(path, groups, metrics, tables, pq, turns):
-    labels = [f"{m} / {s}" for m, s in groups]
-    lines = ["# FlipRate summary", "",
-             "Rates are percentages with 95% bootstrap CIs (2,000 resamples over questions); "
-             "EDS and the baseline-adjusted rates are in percentage points.", "",
-             "Models: " + ", ".join(f"`{k}` = `{MODELS[k]['id']}`" for k in dict.fromkeys(m for m, _ in groups) if k in MODELS),
-             "", "## Main metrics", ""]
+def main_metrics_table(groups, metrics, view):
+    metrics = metrics[metrics["view"] == view]
     rows = []
     for key, label, kind in MAIN_METRICS:
         row = [label]
@@ -368,6 +363,27 @@ def write_summary(path, groups, metrics, tables, pq, turns):
             r = metrics[(metrics["model"] == model) & (metrics["system"] == system) & (metrics["metric"] == key)].iloc[0]
             row.append(fmt(r["value"], r["ci_lo"], r["ci_hi"], kind))
         rows.append(row)
+    return rows
+
+
+def write_summary(path, groups, metrics, tables, pq, turns, n_common):
+    labels = [f"{m} / {s}" for m, s in groups]
+    lines = ["# FlipRate summary", "",
+             "Rates are percentages with 95% bootstrap CIs (2,000 resamples over questions); "
+             "EDS and the baseline-adjusted rates are in percentage points.", "",
+             "## Models", "",
+             "`thinking` is true when the model reasons before answering in these runs. "
+             "It is switched off wherever the API allows; it cannot be switched off for "
+             "claude-opus-5-5 (lowest effort used) or GPT-OSS (reasoning effort low).", "",
+             md_table(["model", "model ID", "thinking"],
+                      [[k, f"`{MODELS[k]['id']}`", str(thinks(k)).lower()]
+                       for k in dict.fromkeys(m for m, _ in groups) if k in MODELS]),
+             "", "## Main metrics", "",
+             "All questions each model completed (question sets can differ between models "
+             "if a run was cut short; see the common-set table below).", ""]
+    all_metrics = metrics
+    metrics = all_metrics[all_metrics["view"] == "all"]
+    rows = main_metrics_table(groups, all_metrics, "all")
     for key, label in [("truncation_rate", "Truncation rate, all turns (hit output-token limit)"),
                        ("parse_fail_rate", "Parse-failure rate, all turns (answer or confidence unread)"),
                        ("no_answer_rate", "No answer extracted, all turns"),
@@ -378,6 +394,12 @@ def write_summary(path, groups, metrics, tables, pq, turns):
             row.append(fmt(r["value"], kind="count" if key == "turn0_unusable" else "pct"))
         rows.append(row)
     lines += [md_table(["Metric"] + labels, rows), ""]
+
+    lines += ["## Main metrics, common set", "",
+              f"Restricted to the {n_common} questions that every model completed under the "
+              "default system prompt (parsed turn 0 for all of them), so models are compared "
+              "on identical questions.", "",
+              md_table(["Metric"] + labels, main_metrics_table(groups, all_metrics, "common")), ""]
 
     lines += ["## Flip-level distribution (pressure branch)", "",
               "First level at which the answer changed; counts (and % of the subgroup).", ""]
@@ -421,6 +443,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--results", default=str(RESULTS_DIR / "results.csv"))
     parser.add_argument("--outdir", default=str(RESULTS_DIR))
+    parser.add_argument("--view", choices=["all", "common"], default="all",
+                        help="question set used for the figures (summary.md always has both)")
     args = parser.parse_args()
     outdir = Path(args.outdir)
     outdir.mkdir(exist_ok=True)
@@ -431,8 +455,21 @@ def main():
     groups = [(m, s) for m in models for s in SYSTEM_ORDER
               if ((pq["model"] == m) & (pq["system"] == s)).any()]
 
+    # Common set: questions with a parsed turn 0 for every model (default system).
+    default = pq[pq["system"] == "default"]
+    per_model = [set(default[default["model"] == m]["qid"]) for m in models if (m, "default") in groups]
+    common = set.intersection(*per_model) if per_model else set()
+
     rng = np.random.default_rng(SEED)
     metric_rows, tables = [], {"reliability": {}, "conf": {}, "logit": {}}
+    for model, system in groups:
+        q = pq[(pq["model"] == model) & (pq["system"] == system) & pq["qid"].isin(common)]
+        if len(q):
+            metric_rows += [{"view": "common", "model": model, "system": system, **r}
+                            for r in bootstrap_metrics(q, rng)]
+        else:
+            metric_rows += [{"view": "common", "model": model, "system": system, "metric": k,
+                             "value": np.nan} for k, _, _ in MAIN_METRICS]
     for model, system in groups:
         q = pq[(pq["model"] == model) & (pq["system"] == system)]
         t = turns[(turns["model"] == model) & (turns["system"] == system)]
@@ -448,13 +485,19 @@ def main():
                 g = q[q["correct"] == correct]
                 rows.append({"metric": f"flip_level_{name}_{'never' if level == 0 else f'L{level}'}",
                              "value": (g["flip_level"] == level).mean() if len(g) else np.nan})
-        metric_rows += [{"model": model, "system": system, **r} for r in rows]
+        metric_rows += [{"view": "all", "model": model, "system": system, **r} for r in rows]
         tables["reliability"][(model, system)] = reliability_table(q)
         tables["conf"][(model, system)] = conf_resistance_table(q)
         tables["logit"][(model, system)] = logit_table(q)
 
-    metrics = pd.DataFrame(metric_rows, columns=["model", "system", "metric", "value", "ci_lo", "ci_hi"])
-    metrics.to_csv(outdir / "metrics.csv", index=False)
+    all_views = pd.DataFrame(metric_rows, columns=["view", "model", "system", "metric", "value", "ci_lo", "ci_hi"])
+    all_views.to_csv(outdir / "metrics.csv", index=False)
+    metrics = all_views[all_views["view"] == args.view]
+    if args.view == "common":  # figures on the common set
+        pq = pq[pq["qid"].isin(common)]
+        for key in list(tables["conf"]):
+            tables["conf"][key] = conf_resistance_table(
+                pq[(pq["model"] == key[0]) & (pq["system"] == key[1])])
 
     default_models = [m for m in models if (m, "default") in groups]
     if default_models:
@@ -465,7 +508,7 @@ def main():
     if guard_models:
         fig_guard(metrics, guard_models, outdir / "fig4_guard.png")
 
-    write_summary(outdir / "summary.md", groups, metrics, tables, pq, turns)
+    write_summary(outdir / "summary.md", groups, all_views, tables, pq, turns, len(common))
     print(f"Wrote metrics.csv, summary.md and figures to {outdir}")
 
 

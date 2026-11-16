@@ -38,6 +38,10 @@ SUBJECT_COUNTS = {
     "high_school_mathematics": 6,
 }
 
+# data.py writes this many blocks of 100 questions (each with the subject mix
+# above). `--n 100` uses the first block; `--n 200` extends it with the second.
+N_BLOCKS = 2
+
 # Output limits. They must be generous enough that no reply is cut off before
 # its JSON ends. GPT-OSS and claude-opus-5-5 spend hidden reasoning tokens out
 # of the same limit, so they get more room.
@@ -81,6 +85,19 @@ MODELS = {
     "gpt-oss-xs": _groq_spec(os.environ.get("GROQ_OPEN_AI_MODEL_XS")),
     "gpt-oss-lg": _groq_spec(os.environ.get("GROQ_OPEN_AI_MODEL_LG")),
 }
+
+def thinks(model_key):
+    """True if the model reasons before answering in our calls.
+
+    Thinking is switched off wherever the API allows it. It cannot be switched
+    off for claude-opus-5-5 (runs at the lowest effort) or for the GPT-OSS
+    models (reasoning effort low).
+    """
+    spec = MODELS[model_key]
+    if spec["provider"] == "groq":
+        return True
+    return spec["extra"].get("thinking", {}).get("type") not in ("disabled", "between_tools")
+
 
 # Concurrent requests per provider. Groq's free tier is tightly rate limited.
 CONCURRENCY = {"anthropic": 6, "groq": 2}

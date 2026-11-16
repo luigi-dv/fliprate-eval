@@ -179,8 +179,9 @@ def main():
         model_keys, n, out = model_keys[:1], 5, RESULTS_DIR / "pilot.csv"
     if args.out:
         out = Path(args.out)
-    if n < len(questions):
-        questions = random.Random(SEED).sample(questions, n)
+    if n > len(questions):
+        parser.error(f"--n {n} but data/questions.json has only {len(questions)} questions")
+    questions = questions[:n]  # the list is already in a seeded shuffled order
 
     rows, errors = asyncio.run(run_all(model_keys, questions, args.system))
     save(rows, out, model_keys, args.system)

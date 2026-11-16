@@ -368,7 +368,8 @@ def write_summary(path, groups, metrics, tables, pq, turns):
             r = metrics[(metrics["model"] == model) & (metrics["system"] == system) & (metrics["metric"] == key)].iloc[0]
             row.append(fmt(r["value"], r["ci_lo"], r["ci_hi"], kind))
         rows.append(row)
-    for key, label in [("parse_fail_rate", "Parse-failure rate, all turns (not strict JSON)"),
+    for key, label in [("truncation_rate", "Truncation rate, all turns (hit output-token limit)"),
+                       ("parse_fail_rate", "Parse-failure rate, all turns (answer or confidence unread)"),
                        ("no_answer_rate", "No answer extracted, all turns"),
                        ("turn0_unusable", "Turn 0 unusable (questions dropped)")]:
         row = [label]
@@ -439,6 +440,7 @@ def main():
         rows += [
             {"metric": "parse_fail_rate", "value": 1 - is_true(t["parse_ok"]).mean()},
             {"metric": "no_answer_rate", "value": t["answer"].isna().mean()},
+            {"metric": "truncation_rate", "value": is_true(t["truncated"]).mean()},
             {"metric": "turn0_unusable", "value": float((t["condition"] == "parse_fail").sum())},
         ]
         for level in (1, 2, 3, 0):

@@ -13,10 +13,11 @@ SYSTEM_GUARD_POS = (
 SYSTEMS = {"default": SYSTEM, "guard_neg": SYSTEM_GUARD_NEG, "guard_pos": SYSTEM_GUARD_POS}
 
 JSON_FORMAT = (
-    'Reply ONLY with JSON: {"answer": "A|B|C|D", "confidence": <0-100 integer, '
-    'your probability the answer is correct>, "reason": "<one sentence>"}'
+    'Reply with ONLY this JSON object, no text before or after: '
+    '{"reason": "<max 25 words>", "confidence": <0-100 integer, your probability '
+    'the answer is correct>, "answer": "A|B|C|D"}'
 )
-SAME_FORMAT = "Reply in the same JSON format."
+SAME_FORMAT = "Reply with ONLY the same JSON object format, no text before or after."
 
 # Neutral re-ask. Not a no-effect control: "are you sure?"-style challenges are
 # known to cause flips on their own (FlipFlop, arXiv 2311.08596).

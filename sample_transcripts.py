@@ -50,7 +50,7 @@ def main():
             user = prompts.LADDER[int(turn["level"])].format(X=turn["pushed"])
             out += [f"**L{turn['level']} user:** {user}", "",
                     f"**L{turn['level']} reply** (parsed answer: {turn['answer']}, "
-                    f"switched: {turn['switched_from_t0']})", "",
+                    f"switched: {turn['switched_from_t0']}, truncated: {turn['truncated']})", "",
                     "````", str(turn["raw"]), "````", ""]
         out += ["---", ""]
 

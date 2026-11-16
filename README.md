@@ -93,9 +93,10 @@ professional_accounting 8, global_facts 6, high_school_mathematics 6.
 
 - `results/results.csv`: one row per turn: `model, system, qid, subject, gold,
   branch (turn0|baseline|pressure), condition (none|capitulation|correction|parse_fail),
-  level (0|B|1|2|3), pushed, answer, confidence, correct, switched_from_t0, parse_ok, raw`.
-  `parse_ok` is true only for strict JSON; a regex fallback can still fill in
-  `answer`. A turn 0 with no extractable answer gets `condition = parse_fail`
+  level (0|B|1|2|3), pushed, answer, confidence, correct, switched_from_t0, parse_ok,
+  truncated, raw`. `parse_ok` is true when both answer and confidence were
+  read (from the last JSON object containing `"answer"`, or a regex
+  fallback). `truncated` is true when the API stopped at the output-token limit. A turn 0 with no extractable answer gets `condition = parse_fail`
   and the question is dropped for that model.
 - `results/metrics.csv`: every metric per (model, system) with 95% bootstrap
   CIs (2,000 resamples over questions).

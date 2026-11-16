@@ -68,8 +68,9 @@ async def _call_anthropic(spec, messages):
         kwargs["temperature"] = spec["temperature"]
     response = await _client("anthropic").messages.create(**kwargs)
     if response.stop_reason == "refusal":
-        return ""
-    return "".join(b.text for b in response.content if b.type == "text")
+        return "", False
+    text = "".join(b.text for b in response.content if b.type == "text")
+    return text, response.stop_reason == "max_tokens"
 
 
 async def _call_groq(spec, messages):
@@ -83,7 +84,8 @@ async def _call_groq(spec, messages):
     if spec["temperature"] is not None:
         kwargs["temperature"] = spec["temperature"]
     response = await _client("groq").chat.completions.create(**kwargs)
-    return response.choices[0].message.content or ""
+    choice = response.choices[0]
+    return choice.message.content or "", choice.finish_reason == "length"
 
 
 def _retry_after(error):
@@ -94,12 +96,16 @@ def _retry_after(error):
         return None
 
 
-async def call(model_key: str, messages: list[dict]) -> str:
-    """Return the model's reply text for `messages` ([{"role", "content"}])."""
+async def call(model_key: str, messages: list[dict]) -> tuple[str, bool]:
+    """Return (reply text, truncated) for `messages` ([{"role", "content"}]).
+
+    `truncated` is True when the API stopped the reply at the output-token limit.
+    """
     messages = [{"role": m["role"], "content": m["content"]} for m in messages]
     path = _cache_path(model_key, messages)
     if path.exists():
-        return json.loads(path.read_text())["response"]
+        record = json.loads(path.read_text())
+        return record["response"], record["truncated"]
 
     spec = MODELS[model_key]
     provider = spec["provider"]
@@ -108,7 +114,7 @@ async def call(model_key: str, messages: list[dict]) -> str:
     for attempt in range(MAX_TRIES):
         try:
             async with _semaphore(provider):
-                text = await fn(spec, messages)
+                text, truncated = await fn(spec, messages)
             break
         except RETRYABLE as error:
             wait = _retry_after(error)
@@ -121,6 +127,6 @@ async def call(model_key: str, messages: list[dict]) -> str:
     if text.strip():  # never cache an empty reply; a re-run will ask again
         CACHE_DIR.mkdir(exist_ok=True)
         record = {"model_key": model_key, "model_id": spec["id"],
-                  "messages": messages, "response": text}
+                  "messages": messages, "response": text, "truncated": truncated}
         path.write_text(json.dumps(record, ensure_ascii=False, indent=1))
-    return text
+    return text, truncated

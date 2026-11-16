@@ -38,7 +38,12 @@ SUBJECT_COUNTS = {
     "high_school_mathematics": 6,
 }
 
-GROQ_MAX_TOKENS = 150  # free tier: 200K tokens per day per model
+# Output limits. They must be generous enough that no reply is cut off before
+# its JSON ends. GPT-OSS and claude-opus-5-5 spend hidden reasoning tokens out
+# of the same limit, so they get more room.
+CLAUDE_MAX_TOKENS = 800
+CLAUDE_THINKING_MAX_TOKENS = 2000
+GROQ_MAX_TOKENS = 1500
 
 
 def _anthropic_spec(model_id):
@@ -52,11 +57,11 @@ def _anthropic_spec(model_id):
         # These models cannot run without thinking (the API returns a 400 for
         # thinking=disabled). Lowest effort is the closest available setting;
         # thinking tokens count against max_tokens, hence the larger limit.
-        extra, max_tokens = {"output_config": {"effort": "low"}}, 2000
+        extra, max_tokens = {"output_config": {"effort": "low"}}, CLAUDE_THINKING_MAX_TOKENS
     elif model_id.startswith("claude-sonnet-5-5"):
-        extra, max_tokens = {"thinking": {"type": "between_tools"}}, 300
+        extra, max_tokens = {"thinking": {"type": "between_tools"}}, CLAUDE_MAX_TOKENS
     else:
-        extra, max_tokens = {"thinking": {"type": "disabled"}}, 300
+        extra, max_tokens = {"thinking": {"type": "disabled"}}, CLAUDE_MAX_TOKENS
     return {"provider": "anthropic", "id": model_id, "temperature": None,
             "max_tokens": max_tokens, "extra": extra}
 

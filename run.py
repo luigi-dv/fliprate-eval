@@ -21,7 +21,7 @@ from config import LETTERS, MODELS, QUESTIONS_PATH, RESULTS_DIR, SEED
 
 COLUMNS = [
     "model", "system", "qid", "subject", "gold", "branch", "condition", "level",
-    "pushed", "answer", "confidence", "correct", "switched_from_t0", "parse_ok", "raw",
+    "pushed", "answer", "confidence", "correct", "switched_from_t0", "parse_ok", "truncated", "raw",
 ]
 
 
@@ -41,30 +41,29 @@ def _clean_confidence(value):
 def parse_reply(raw: str):
     """Return (answer, confidence, parse_ok).
 
-    parse_ok is True only when the reply contained valid JSON with a valid
-    answer letter. If the regex fallback had to be used, answer/confidence may
-    still be filled in but parse_ok is False.
+    Uses the last JSON object in the reply that has an "answer" key (models
+    sometimes write working, or other braces, before the final object). If no
+    such object parses, falls back to the last answer/confidence pattern in the
+    text. parse_ok is True whenever both answer and confidence were read.
     """
-    # First {...} block: try the shortest match, then the longest (in case the
-    # reason text itself contains a closing brace).
-    for pattern in (r"\{.*?\}", r"\{.*\}"):
-        match = re.search(pattern, raw, re.S)
-        if not match:
-            continue
+    answer = confidence = None
+    decoder = json.JSONDecoder()
+    for start in (m.start() for m in re.finditer(r"\{", raw)):
         try:
-            obj = json.loads(match.group(0))
+            obj, _ = decoder.raw_decode(raw, start)
         except json.JSONDecodeError:
             continue
-        if isinstance(obj, dict) and _clean_answer(obj.get("answer")):
-            return _clean_answer(obj["answer"]), _clean_confidence(obj.get("confidence")), True
+        if isinstance(obj, dict) and "answer" in obj:
+            answer = _clean_answer(obj["answer"])
+            confidence = _clean_confidence(obj.get("confidence"))
 
-    answer = re.search(r'"?answer"?\s*[:=]\s*"?\(?([A-D])\b', raw, re.I)
-    confidence = re.search(r'"?confidence"?\s*[:=]\s*"?(\d{1,3})', raw, re.I)
-    return (
-        answer.group(1).upper() if answer else None,
-        _clean_confidence(confidence.group(1)) if confidence else None,
-        False,
-    )
+    if answer is None:
+        found = re.findall(r'"?answer"?\s*[:=]\s*"?\(?([A-D])\b', raw, re.I)
+        answer = found[-1].upper() if found else None
+    if confidence is None:
+        found = re.findall(r'"?confidence"?\s*[:=]\s*"?(\d{1,3})', raw, re.I)
+        confidence = _clean_confidence(found[-1]) if found else None
+    return answer, confidence, answer is not None and confidence is not None
 
 
 def pushed_letter(question: dict, turn0_correct: bool) -> str:
@@ -81,7 +80,8 @@ async def run_question(model_key: str, question: dict, system_name: str) -> list
     base = {"model": model_key, "system": system_name, "qid": question["id"],
             "subject": question["subject"], "gold": gold}
 
-    def row(branch, condition, level, pushed, raw, turn0_answer=None):
+    def row(branch, condition, level, pushed, reply, turn0_answer=None):
+        raw, truncated = reply
         answer, confidence, parse_ok = parse_reply(raw)
         switched = None
         if turn0_answer is not None and answer is not None:
@@ -89,35 +89,36 @@ async def run_question(model_key: str, question: dict, system_name: str) -> list
         return {**base, "branch": branch, "condition": condition, "level": level,
                 "pushed": pushed, "answer": answer, "confidence": confidence,
                 "correct": None if answer is None else answer == gold,
-                "switched_from_t0": switched, "parse_ok": parse_ok, "raw": raw}
+                "switched_from_t0": switched, "parse_ok": parse_ok,
+                "truncated": truncated, "raw": raw}
 
     # Turn 0
     history = [
         {"role": "system", "content": prompts.SYSTEMS[system_name]},
         {"role": "user", "content": prompts.turn0(question)},
     ]
-    raw0 = await providers.call(model_key, history)
-    turn0 = row("turn0", "none", "0", None, raw0)
+    reply0 = await providers.call(model_key, history)
+    turn0 = row("turn0", "none", "0", None, reply0)
     if turn0["answer"] is None:
         turn0["condition"] = "parse_fail"
         return [turn0]
     rows = [turn0]
-    history.append({"role": "assistant", "content": raw0})
+    history.append({"role": "assistant", "content": reply0[0]})
 
     # Baseline branch: neutral re-ask on top of the turn-0 history.
-    raw = await providers.call(
+    reply = await providers.call(
         model_key, history + [{"role": "user", "content": prompts.BASELINE}]
     )
-    rows.append(row("baseline", "none", "B", None, raw, turn0["answer"]))
+    rows.append(row("baseline", "none", "B", None, reply, turn0["answer"]))
 
     # Pressure branch: escalate L1 -> L3 in one conversation, stop at first switch.
     condition = "capitulation" if turn0["correct"] else "correction"
     pushed = pushed_letter(question, turn0["correct"])
     for level, template in prompts.LADDER.items():
         history.append({"role": "user", "content": template.format(X=pushed)})
-        raw = await providers.call(model_key, history)
-        history.append({"role": "assistant", "content": raw})
-        turn = row("pressure", condition, str(level), pushed, raw, turn0["answer"])
+        reply = await providers.call(model_key, history)
+        history.append({"role": "assistant", "content": reply[0]})
+        turn = row("pressure", condition, str(level), pushed, reply, turn0["answer"])
         rows.append(turn)
         if turn["switched_from_t0"]:
             break
